@@ -1,10 +1,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-VisualStudioVersion = 12.0.0.0
-MinimumVisualStudioVersion = 10.0.0.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EdGraph.Me.Client", "src\EdGraph.Me.Client\EdGraph.Me.Client.csproj", "{61611DE3-C3B7-4234-97B6-D957F235EA1D}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33414.496
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EdGraph.Me.Client", "src\EdGraph.Me.Client\EdGraph.Me.Client.csproj", "{61611DE3-C3B7-4234-97B6-D957F235EA1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EdGraph.Me.Client.Test", "src\EdGraph.Me.Client.Test\EdGraph.Me.Client.Test.csproj", "{19F1DEBC-DE5E-4517-8062-F000CD499087}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EdGraph.Me.Client.Test", "src\EdGraph.Me.Client.Test\EdGraph.Me.Client.Test.csproj", "{19F1DEBC-DE5E-4517-8062-F000CD499087}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
