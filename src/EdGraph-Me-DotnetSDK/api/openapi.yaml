@@ -1,0 +1,537 @@
+openapi: 3.0.1
+info:
+  description: Me Api - v1.0
+  title: Me Api
+  version: v1.0
+servers:
+- url: https://api.edgraph.com/tenant
+security:
+- oauth2:
+  - https://api.edgraph.com/tenant
+paths:
+  /me/preferences:
+    post:
+      operationId: UpdateUserPreference
+      parameters:
+      - explode: true
+        in: query
+        name: api-version
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: header
+        name: X-version
+        required: false
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/IdentityApi.User.V1.UpdateUserPreferenceRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdentityApi.User.V1.UpdateUserPreferenceRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/IdentityApi.User.V1.UpdateUserPreferenceRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/IdentityApi.User.V1.UpdateUserPreferenceRequest'
+        description: ""
+      responses:
+        "202":
+          description: User preference updated
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails'
+          description: User preference has missing/invalid values
+        "500":
+          description: Oops! Can't update your user preference right now
+      summary: Update a user's preferences
+      tags:
+      - User Preferences
+  /me:
+    get:
+      operationId: GetUserCache
+      parameters:
+      - explode: true
+        in: query
+        name: api-version
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: header
+        name: X-version
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Platform.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.UserCacheResponse'
+          description: User cache returned
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails'
+          description: User cache not found
+        "500":
+          description: Oops! Can't retrieve your user cache right now
+      summary: "Retrieves the profile of the user that is currently logged in, including\
+        \ user preferences and tenants associated"
+      tags:
+      - User Profile
+components:
+  schemas:
+    EdGraph.Platform.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.UserCacheResponse:
+      additionalProperties: false
+      example:
+        firstName: firstName
+        lastName: lastName
+        tenants:
+        - tenantType: null
+          tenantStatus: null
+          subscriptionsMigrated: true
+          subscriptions:
+          - gracePeriod: 0
+            actualEndDateTime: actualEndDateTime
+            assignedLicenses: 1
+            lastModifiedDateTime: lastModifiedDateTime
+            lastModifiedBy: lastModifiedBy
+            createdDateTime: createdDateTime
+            endDateTime: endDateTime
+            numberOfLicenses: 6
+            licenseType: null
+            autoAssign: true
+            startDateTime: startDateTime
+            createdBy: createdBy
+            tenantId: tenantId
+            subscriptionStatus: null
+            subscriptionId: subscriptionId
+            applicationId: applicationId
+            lastMaxAssignedLicensesDateTime: lastMaxAssignedLicensesDateTime
+            maxAssignedLicenses: 5
+          - gracePeriod: 0
+            actualEndDateTime: actualEndDateTime
+            assignedLicenses: 1
+            lastModifiedDateTime: lastModifiedDateTime
+            lastModifiedBy: lastModifiedBy
+            createdDateTime: createdDateTime
+            endDateTime: endDateTime
+            numberOfLicenses: 6
+            licenseType: null
+            autoAssign: true
+            startDateTime: startDateTime
+            createdBy: createdBy
+            tenantId: tenantId
+            subscriptionStatus: null
+            subscriptionId: subscriptionId
+            applicationId: applicationId
+            lastMaxAssignedLicensesDateTime: lastMaxAssignedLicensesDateTime
+            maxAssignedLicenses: 5
+          identityProviders:
+          - null
+          - null
+          lastModifiedDateTime: lastModifiedDateTime
+          organizationName: organizationName
+          lastModifiedBy: lastModifiedBy
+          domains:
+          - domains
+          - domains
+          createdDateTime: createdDateTime
+          isDemo: true
+          enforceMfa: true
+          createdBy: createdBy
+          organizationIdentifier: organizationIdentifier
+          tenantId: tenantId
+          state: state
+        - tenantType: null
+          tenantStatus: null
+          subscriptionsMigrated: true
+          subscriptions:
+          - gracePeriod: 0
+            actualEndDateTime: actualEndDateTime
+            assignedLicenses: 1
+            lastModifiedDateTime: lastModifiedDateTime
+            lastModifiedBy: lastModifiedBy
+            createdDateTime: createdDateTime
+            endDateTime: endDateTime
+            numberOfLicenses: 6
+            licenseType: null
+            autoAssign: true
+            startDateTime: startDateTime
+            createdBy: createdBy
+            tenantId: tenantId
+            subscriptionStatus: null
+            subscriptionId: subscriptionId
+            applicationId: applicationId
+            lastMaxAssignedLicensesDateTime: lastMaxAssignedLicensesDateTime
+            maxAssignedLicenses: 5
+          - gracePeriod: 0
+            actualEndDateTime: actualEndDateTime
+            assignedLicenses: 1
+            lastModifiedDateTime: lastModifiedDateTime
+            lastModifiedBy: lastModifiedBy
+            createdDateTime: createdDateTime
+            endDateTime: endDateTime
+            numberOfLicenses: 6
+            licenseType: null
+            autoAssign: true
+            startDateTime: startDateTime
+            createdBy: createdBy
+            tenantId: tenantId
+            subscriptionStatus: null
+            subscriptionId: subscriptionId
+            applicationId: applicationId
+            lastMaxAssignedLicensesDateTime: lastMaxAssignedLicensesDateTime
+            maxAssignedLicenses: 5
+          identityProviders:
+          - null
+          - null
+          lastModifiedDateTime: lastModifiedDateTime
+          organizationName: organizationName
+          lastModifiedBy: lastModifiedBy
+          domains:
+          - domains
+          - domains
+          createdDateTime: createdDateTime
+          isDemo: true
+          enforceMfa: true
+          createdBy: createdBy
+          organizationIdentifier: organizationIdentifier
+          tenantId: tenantId
+          state: state
+        preferences:
+        - code: code
+          value: value
+        - code: code
+          value: value
+        browserDebugEnabled: true
+        userName: userName
+        email: email
+      properties:
+        userName:
+          description: The user name for this user.
+          nullable: true
+          type: string
+        email:
+          description: The email address for this user.
+          nullable: true
+          type: string
+        firstName:
+          description: The first name for this user.
+          nullable: true
+          type: string
+        lastName:
+          description: The last name for this user.
+          nullable: true
+          type: string
+        preferences:
+          description: List of preferences associated with this user
+          items:
+            $ref: '#/components/schemas/IdentityApi.User.V1.Preference'
+          nullable: true
+          type: array
+        tenants:
+          description: List of tenants associated with this user
+          items:
+            $ref: '#/components/schemas/TenantApi.Tenant.V1.TenantListResponse'
+          nullable: true
+          type: array
+        browserDebugEnabled:
+          description: Flag to indicate if the debug mode for user is enabled
+          type: boolean
+      type: object
+    IdentityApi.User.V1.Preference:
+      additionalProperties: false
+      example:
+        code: code
+        value: value
+      properties:
+        code:
+          nullable: true
+          type: string
+        value:
+          nullable: true
+          type: string
+      type: object
+    IdentityApi.User.V1.UpdateUserPreferenceRequest:
+      additionalProperties: false
+      properties:
+        claimName:
+          nullable: true
+          type: string
+        code:
+          nullable: true
+          type: string
+        value:
+          nullable: true
+          type: string
+      type: object
+    Microsoft.AspNetCore.Mvc.ProblemDetails:
+      additionalProperties: {}
+      properties:
+        type:
+          nullable: true
+          type: string
+        title:
+          nullable: true
+          type: string
+        status:
+          format: int32
+          nullable: true
+          type: integer
+        detail:
+          nullable: true
+          type: string
+        instance:
+          nullable: true
+          type: string
+      type: object
+    TenantApi.Tenant.V1.LicenseType:
+      enum:
+      - Unknown
+      - Full
+      - Trial
+      type: string
+    TenantApi.Tenant.V1.SubscriptionListResponse:
+      additionalProperties: false
+      example:
+        gracePeriod: 0
+        actualEndDateTime: actualEndDateTime
+        assignedLicenses: 1
+        lastModifiedDateTime: lastModifiedDateTime
+        lastModifiedBy: lastModifiedBy
+        createdDateTime: createdDateTime
+        endDateTime: endDateTime
+        numberOfLicenses: 6
+        licenseType: null
+        autoAssign: true
+        startDateTime: startDateTime
+        createdBy: createdBy
+        tenantId: tenantId
+        subscriptionStatus: null
+        subscriptionId: subscriptionId
+        applicationId: applicationId
+        lastMaxAssignedLicensesDateTime: lastMaxAssignedLicensesDateTime
+        maxAssignedLicenses: 5
+      properties:
+        tenantId:
+          nullable: true
+          type: string
+        subscriptionId:
+          nullable: true
+          type: string
+        applicationId:
+          nullable: true
+          type: string
+        startDateTime:
+          nullable: true
+          type: string
+        endDateTime:
+          nullable: true
+          type: string
+        actualEndDateTime:
+          nullable: true
+          type: string
+        gracePeriod:
+          format: int32
+          type: integer
+        numberOfLicenses:
+          format: int32
+          type: integer
+        assignedLicenses:
+          format: int32
+          type: integer
+        maxAssignedLicenses:
+          format: int32
+          type: integer
+        lastMaxAssignedLicensesDateTime:
+          nullable: true
+          type: string
+        licenseType:
+          $ref: '#/components/schemas/TenantApi.Tenant.V1.LicenseType'
+        subscriptionStatus:
+          $ref: '#/components/schemas/TenantApi.Tenant.V1.SubscriptionStatus'
+        autoAssign:
+          type: boolean
+        createdBy:
+          nullable: true
+          type: string
+        createdDateTime:
+          nullable: true
+          type: string
+        lastModifiedBy:
+          nullable: true
+          type: string
+        lastModifiedDateTime:
+          nullable: true
+          type: string
+      type: object
+    TenantApi.Tenant.V1.SubscriptionStatus:
+      enum:
+      - Unknown
+      - Active
+      - Inactive
+      - Pending
+      - Rejected
+      type: string
+    TenantApi.Tenant.V1.TenantIdentityProviders:
+      enum:
+      - Local
+      - Aad
+      - Google
+      - Adfs
+      type: string
+    TenantApi.Tenant.V1.TenantListResponse:
+      additionalProperties: false
+      example:
+        tenantType: null
+        tenantStatus: null
+        subscriptionsMigrated: true
+        subscriptions:
+        - gracePeriod: 0
+          actualEndDateTime: actualEndDateTime
+          assignedLicenses: 1
+          lastModifiedDateTime: lastModifiedDateTime
+          lastModifiedBy: lastModifiedBy
+          createdDateTime: createdDateTime
+          endDateTime: endDateTime
+          numberOfLicenses: 6
+          licenseType: null
+          autoAssign: true
+          startDateTime: startDateTime
+          createdBy: createdBy
+          tenantId: tenantId
+          subscriptionStatus: null
+          subscriptionId: subscriptionId
+          applicationId: applicationId
+          lastMaxAssignedLicensesDateTime: lastMaxAssignedLicensesDateTime
+          maxAssignedLicenses: 5
+        - gracePeriod: 0
+          actualEndDateTime: actualEndDateTime
+          assignedLicenses: 1
+          lastModifiedDateTime: lastModifiedDateTime
+          lastModifiedBy: lastModifiedBy
+          createdDateTime: createdDateTime
+          endDateTime: endDateTime
+          numberOfLicenses: 6
+          licenseType: null
+          autoAssign: true
+          startDateTime: startDateTime
+          createdBy: createdBy
+          tenantId: tenantId
+          subscriptionStatus: null
+          subscriptionId: subscriptionId
+          applicationId: applicationId
+          lastMaxAssignedLicensesDateTime: lastMaxAssignedLicensesDateTime
+          maxAssignedLicenses: 5
+        identityProviders:
+        - null
+        - null
+        lastModifiedDateTime: lastModifiedDateTime
+        organizationName: organizationName
+        lastModifiedBy: lastModifiedBy
+        domains:
+        - domains
+        - domains
+        createdDateTime: createdDateTime
+        isDemo: true
+        enforceMfa: true
+        createdBy: createdBy
+        organizationIdentifier: organizationIdentifier
+        tenantId: tenantId
+        state: state
+      properties:
+        tenantId:
+          nullable: true
+          type: string
+        tenantType:
+          $ref: '#/components/schemas/TenantApi.Tenant.V1.TenantType'
+        organizationIdentifier:
+          nullable: true
+          type: string
+        organizationName:
+          nullable: true
+          type: string
+        state:
+          nullable: true
+          type: string
+        tenantStatus:
+          $ref: '#/components/schemas/TenantApi.Tenant.V1.TenantStatus'
+        isDemo:
+          type: boolean
+        enforceMfa:
+          type: boolean
+        subscriptionsMigrated:
+          type: boolean
+        subscriptions:
+          items:
+            $ref: '#/components/schemas/TenantApi.Tenant.V1.SubscriptionListResponse'
+          nullable: true
+          readOnly: true
+          type: array
+        domains:
+          items:
+            type: string
+          nullable: true
+          readOnly: true
+          type: array
+        createdBy:
+          nullable: true
+          type: string
+        createdDateTime:
+          nullable: true
+          type: string
+        lastModifiedBy:
+          nullable: true
+          type: string
+        lastModifiedDateTime:
+          nullable: true
+          type: string
+        identityProviders:
+          items:
+            $ref: '#/components/schemas/TenantApi.Tenant.V1.TenantIdentityProviders'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    TenantApi.Tenant.V1.TenantStatus:
+      enum:
+      - Unknown
+      - Active
+      - Inactive
+      type: string
+    TenantApi.Tenant.V1.TenantType:
+      enum:
+      - Unknown
+      - Internal
+      - State
+      - Collaborative
+      - District
+      - Partner
+      - Teacher
+      - Student
+      type: string
+  securitySchemes:
+    oauth2:
+      description: Use bearer token generated from an OpenId server
+      flows:
+        clientCredentials:
+          scopes:
+            https://api.edgraph.com/tenant: EdGraph Platform - Tenant Api
+          tokenUrl: https://login.edgraph.com/connect/token
+      type: oauth2
+
