@@ -1,4 +1,4 @@
-# EdGraph.Me.Client.Model.IdentityApiUserV1Preference
+# EdGraph.Me.Client.Model.IdentityApiUserV1UserPreferenceUpdatedResponse
 
 ## Properties
 

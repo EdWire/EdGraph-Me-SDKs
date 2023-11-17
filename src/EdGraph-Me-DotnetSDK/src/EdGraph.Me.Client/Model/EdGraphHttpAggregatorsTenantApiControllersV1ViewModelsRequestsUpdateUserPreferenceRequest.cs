@@ -26,19 +26,19 @@ using OpenAPIDateConverter = EdGraph.Me.Client.Client.OpenAPIDateConverter;
 namespace EdGraph.Me.Client.Model
 {
     /// <summary>
-    /// IdentityApiUserV1Preference
+    /// EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest
     /// </summary>
-    [DataContract(Name = "IdentityApi.User.V1.Preference")]
-    public partial class IdentityApiUserV1Preference : IEquatable<IdentityApiUserV1Preference>, IValidatableObject
+    [DataContract(Name = "EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Requests.UpdateUserPreferenceRequest")]
+    public partial class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest : IEquatable<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="IdentityApiUserV1Preference" /> class.
+        /// Initializes a new instance of the <see cref="EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest" /> class.
         /// </summary>
         /// <param name="tenantId">tenantId.</param>
         /// <param name="clientId">clientId.</param>
         /// <param name="code">code.</param>
         /// <param name="value">value.</param>
-        public IdentityApiUserV1Preference(string tenantId = default(string), string clientId = default(string), string code = default(string), string value = default(string))
+        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest(Guid? tenantId = default(Guid?), string clientId = default(string), string code = default(string), string value = default(string))
         {
             this.TenantId = tenantId;
             this.ClientId = clientId;
@@ -50,7 +50,7 @@ namespace EdGraph.Me.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [DataMember(Name = "tenantId", EmitDefaultValue = true)]
-        public string TenantId { get; set; }
+        public Guid? TenantId { get; set; }
 
         /// <summary>
         /// Gets or Sets ClientId
@@ -77,7 +77,7 @@ namespace EdGraph.Me.Client.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class IdentityApiUserV1Preference {\n");
+            sb.Append("class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest {\n");
             sb.Append("  TenantId: ").Append(TenantId).Append("\n");
             sb.Append("  ClientId: ").Append(ClientId).Append("\n");
             sb.Append("  Code: ").Append(Code).Append("\n");
@@ -102,15 +102,15 @@ namespace EdGraph.Me.Client.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as IdentityApiUserV1Preference);
+            return this.Equals(input as EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest);
         }
 
         /// <summary>
-        /// Returns true if IdentityApiUserV1Preference instances are equal
+        /// Returns true if EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest instances are equal
         /// </summary>
-        /// <param name="input">Instance of IdentityApiUserV1Preference to be compared</param>
+        /// <param name="input">Instance of EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(IdentityApiUserV1Preference input)
+        public bool Equals(EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest input)
         {
             if (input == null)
             {

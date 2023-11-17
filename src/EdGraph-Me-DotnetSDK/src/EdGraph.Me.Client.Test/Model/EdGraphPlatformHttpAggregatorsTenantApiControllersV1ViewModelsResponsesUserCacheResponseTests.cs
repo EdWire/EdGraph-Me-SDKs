@@ -54,7 +54,6 @@ namespace EdGraph.Me.Client.Test.Model
             //Assert.IsType<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheResponse>(instance);
         }
 
-
         /// <summary>
         /// Test the property 'UserName'
         /// </summary>
@@ -63,6 +62,7 @@ namespace EdGraph.Me.Client.Test.Model
         {
             // TODO unit test for the property 'UserName'
         }
+
         /// <summary>
         /// Test the property 'Email'
         /// </summary>
@@ -71,6 +71,7 @@ namespace EdGraph.Me.Client.Test.Model
         {
             // TODO unit test for the property 'Email'
         }
+
         /// <summary>
         /// Test the property 'FirstName'
         /// </summary>
@@ -79,6 +80,7 @@ namespace EdGraph.Me.Client.Test.Model
         {
             // TODO unit test for the property 'FirstName'
         }
+
         /// <summary>
         /// Test the property 'LastName'
         /// </summary>
@@ -87,6 +89,7 @@ namespace EdGraph.Me.Client.Test.Model
         {
             // TODO unit test for the property 'LastName'
         }
+
         /// <summary>
         /// Test the property 'Preferences'
         /// </summary>
@@ -95,6 +98,7 @@ namespace EdGraph.Me.Client.Test.Model
         {
             // TODO unit test for the property 'Preferences'
         }
+
         /// <summary>
         /// Test the property 'Tenants'
         /// </summary>
@@ -103,6 +107,7 @@ namespace EdGraph.Me.Client.Test.Model
         {
             // TODO unit test for the property 'Tenants'
         }
+
         /// <summary>
         /// Test the property 'BrowserDebugEnabled'
         /// </summary>
@@ -112,6 +117,13 @@ namespace EdGraph.Me.Client.Test.Model
             // TODO unit test for the property 'BrowserDebugEnabled'
         }
 
+        /// <summary>
+        /// Test the property 'Extensions'
+        /// </summary>
+        [Fact]
+        public void ExtensionsTest()
+        {
+            // TODO unit test for the property 'Extensions'
+        }
     }
-
 }

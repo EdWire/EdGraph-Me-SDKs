@@ -41,7 +41,8 @@ namespace EdGraph.Me.Client.Model
         /// <param name="preferences">List of preferences associated with this user.</param>
         /// <param name="tenants">List of tenants associated with this user.</param>
         /// <param name="browserDebugEnabled">Flag to indicate if the debug mode for user is enabled.</param>
-        public EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheResponse(string userName = default(string), string email = default(string), string firstName = default(string), string lastName = default(string), List<IdentityApiUserV1Preference> preferences = default(List<IdentityApiUserV1Preference>), List<TenantApiTenantV1TenantListResponse> tenants = default(List<TenantApiTenantV1TenantListResponse>), bool browserDebugEnabled = default(bool))
+        /// <param name="extensions">extensions.</param>
+        public EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheResponse(string userName = default(string), string email = default(string), string firstName = default(string), string lastName = default(string), List<IdentityApiUserV1Preference> preferences = default(List<IdentityApiUserV1Preference>), List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse> tenants = default(List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse>), bool browserDebugEnabled = default(bool), List<IdentityApiUserV1UserExtension> extensions = default(List<IdentityApiUserV1UserExtension>))
         {
             this.UserName = userName;
             this.Email = email;
@@ -50,6 +51,7 @@ namespace EdGraph.Me.Client.Model
             this.Preferences = preferences;
             this.Tenants = tenants;
             this.BrowserDebugEnabled = browserDebugEnabled;
+            this.Extensions = extensions;
         }
 
         /// <summary>
@@ -92,7 +94,7 @@ namespace EdGraph.Me.Client.Model
         /// </summary>
         /// <value>List of tenants associated with this user</value>
         [DataMember(Name = "tenants", EmitDefaultValue = true)]
-        public List<TenantApiTenantV1TenantListResponse> Tenants { get; set; }
+        public List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse> Tenants { get; set; }
 
         /// <summary>
         /// Flag to indicate if the debug mode for user is enabled
@@ -100,6 +102,12 @@ namespace EdGraph.Me.Client.Model
         /// <value>Flag to indicate if the debug mode for user is enabled</value>
         [DataMember(Name = "browserDebugEnabled", EmitDefaultValue = true)]
         public bool BrowserDebugEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Extensions
+        /// </summary>
+        [DataMember(Name = "extensions", EmitDefaultValue = true)]
+        public List<IdentityApiUserV1UserExtension> Extensions { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -116,6 +124,7 @@ namespace EdGraph.Me.Client.Model
             sb.Append("  Preferences: ").Append(Preferences).Append("\n");
             sb.Append("  Tenants: ").Append(Tenants).Append("\n");
             sb.Append("  BrowserDebugEnabled: ").Append(BrowserDebugEnabled).Append("\n");
+            sb.Append("  Extensions: ").Append(Extensions).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -186,6 +195,12 @@ namespace EdGraph.Me.Client.Model
                 (
                     this.BrowserDebugEnabled == input.BrowserDebugEnabled ||
                     this.BrowserDebugEnabled.Equals(input.BrowserDebugEnabled)
+                ) && 
+                (
+                    this.Extensions == input.Extensions ||
+                    this.Extensions != null &&
+                    input.Extensions != null &&
+                    this.Extensions.SequenceEqual(input.Extensions)
                 );
         }
 
@@ -223,6 +238,10 @@ namespace EdGraph.Me.Client.Model
                     hashCode = (hashCode * 59) + this.Tenants.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.BrowserDebugEnabled.GetHashCode();
+                if (this.Extensions != null)
+                {
+                    hashCode = (hashCode * 59) + this.Extensions.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -4,14 +4,81 @@ info:
   title: Me Api
   version: v1.0
 servers:
-- url: https://api.edgraph.com/tenant
+- url: https://api.edgraph.dev/tenant
 security:
 - oauth2:
   - https://api.edgraph.com/tenant
 paths:
-  /me/preferences:
+  /me/extensions/{code}:
+    delete:
+      operationId: RemoveUserExtension
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: api-version
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: header
+        name: X-version
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityApi.User.V1.UserExtensionRemovedResponse'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Removes a user's profile extension.
+      tags:
+      - My Extensions
+  /me/extensions:
     post:
-      operationId: UpdateUserPreference
+      operationId: SetUserExtension
       parameters:
       - explode: true
         in: query
@@ -31,34 +98,135 @@ paths:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/IdentityApi.User.V1.UpdateUserPreferenceRequest'
+              $ref: '#/components/schemas/IdentityApi.User.V1.SetUserExtensionRequest'
           application/json:
             schema:
-              $ref: '#/components/schemas/IdentityApi.User.V1.UpdateUserPreferenceRequest'
+              $ref: '#/components/schemas/IdentityApi.User.V1.SetUserExtensionRequest'
           text/json:
             schema:
-              $ref: '#/components/schemas/IdentityApi.User.V1.UpdateUserPreferenceRequest'
+              $ref: '#/components/schemas/IdentityApi.User.V1.SetUserExtensionRequest'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/IdentityApi.User.V1.UpdateUserPreferenceRequest'
+              $ref: '#/components/schemas/IdentityApi.User.V1.SetUserExtensionRequest'
         description: ""
       responses:
-        "202":
-          description: User preference updated
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityApi.User.V1.UserExtensionSetResponse'
+          description: The requested resource was successfully retrieved.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails'
-          description: User preference has missing/invalid values
-        "500":
-          description: Oops! Can't update your user preference right now
-      summary: Update a user's preferences
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Creates or update a user's profile extension.
       tags:
-      - User Preferences
+      - My Extensions
+  /me/preferences:
+    post:
+      operationId: UpdateUserPreferenceAsync
+      parameters:
+      - explode: true
+        in: query
+        name: api-version
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: header
+        name: X-version
+        required: false
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Requests.UpdateUserPreferenceRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Requests.UpdateUserPreferenceRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Requests.UpdateUserPreferenceRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Requests.UpdateUserPreferenceRequest'
+        description: ""
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityApi.User.V1.UserPreferenceUpdatedResponse'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Creates or update a user's preference.
+      tags:
+      - My Preferences
   /me:
     get:
-      operationId: GetUserCache
+      operationId: GetUserCacheAsync
       parameters:
       - explode: true
         in: query
@@ -75,149 +243,123 @@ paths:
           type: string
         style: simple
       responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/EdGraph.Platform.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.UserCacheResponse'
-          description: User cache returned
+          description: The requested resource was successfully retrieved.
         "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails'
-          description: User cache not found
-        "500":
-          description: Oops! Can't retrieve your user cache right now
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: The resource could not be found.
       summary: "Retrieves the profile of the user that is currently logged in, including\
-        \ user preferences and tenants associated"
+        \ the user's preferences and its associated tenants"
       tags:
-      - User Profile
+      - My Profile
 components:
   schemas:
+    EdGraph.Common.Errors.Core.ProblemDetails:
+      additionalProperties: false
+      properties:
+        type:
+          nullable: true
+          type: string
+        status:
+          format: int32
+          type: integer
+        title:
+          nullable: true
+          type: string
+        details:
+          nullable: true
+          type: string
+        instance:
+          nullable: true
+          type: string
+        extensions:
+          additionalProperties:
+            nullable: true
+          nullable: true
+          readOnly: true
+          type: object
+      type: object
+    EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Requests.UpdateUserPreferenceRequest:
+      additionalProperties: false
+      properties:
+        tenantId:
+          format: uuid
+          nullable: true
+          type: string
+        clientId:
+          nullable: true
+          type: string
+        code:
+          nullable: true
+          type: string
+        value:
+          nullable: true
+          type: string
+      type: object
     EdGraph.Platform.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.UserCacheResponse:
       additionalProperties: false
       example:
         firstName: firstName
         lastName: lastName
         tenants:
-        - tenantType: null
-          tenantStatus: null
-          subscriptionsMigrated: true
-          subscriptions:
-          - gracePeriod: 0
-            actualEndDateTime: actualEndDateTime
-            assignedLicenses: 1
-            lastModifiedDateTime: lastModifiedDateTime
-            lastModifiedBy: lastModifiedBy
-            createdDateTime: createdDateTime
-            endDateTime: endDateTime
-            numberOfLicenses: 6
-            licenseType: null
-            autoAssign: true
-            startDateTime: startDateTime
-            createdBy: createdBy
-            tenantId: tenantId
-            subscriptionStatus: null
-            subscriptionId: subscriptionId
-            applicationId: applicationId
-            lastMaxAssignedLicensesDateTime: lastMaxAssignedLicensesDateTime
-            maxAssignedLicenses: 5
-          - gracePeriod: 0
-            actualEndDateTime: actualEndDateTime
-            assignedLicenses: 1
-            lastModifiedDateTime: lastModifiedDateTime
-            lastModifiedBy: lastModifiedBy
-            createdDateTime: createdDateTime
-            endDateTime: endDateTime
-            numberOfLicenses: 6
-            licenseType: null
-            autoAssign: true
-            startDateTime: startDateTime
-            createdBy: createdBy
-            tenantId: tenantId
-            subscriptionStatus: null
-            subscriptionId: subscriptionId
-            applicationId: applicationId
-            lastMaxAssignedLicensesDateTime: lastMaxAssignedLicensesDateTime
-            maxAssignedLicenses: 5
-          identityProviders:
-          - null
-          - null
-          lastModifiedDateTime: lastModifiedDateTime
+        - tenantType: tenantType
+          tenantStatus: tenantStatus
           organizationName: organizationName
-          lastModifiedBy: lastModifiedBy
-          domains:
-          - domains
-          - domains
-          createdDateTime: createdDateTime
-          isDemo: true
-          enforceMfa: true
-          createdBy: createdBy
           organizationIdentifier: organizationIdentifier
-          tenantId: tenantId
+          tenantId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: state
-        - tenantType: null
-          tenantStatus: null
-          subscriptionsMigrated: true
-          subscriptions:
-          - gracePeriod: 0
-            actualEndDateTime: actualEndDateTime
-            assignedLicenses: 1
-            lastModifiedDateTime: lastModifiedDateTime
-            lastModifiedBy: lastModifiedBy
-            createdDateTime: createdDateTime
-            endDateTime: endDateTime
-            numberOfLicenses: 6
-            licenseType: null
-            autoAssign: true
-            startDateTime: startDateTime
-            createdBy: createdBy
-            tenantId: tenantId
-            subscriptionStatus: null
-            subscriptionId: subscriptionId
-            applicationId: applicationId
-            lastMaxAssignedLicensesDateTime: lastMaxAssignedLicensesDateTime
-            maxAssignedLicenses: 5
-          - gracePeriod: 0
-            actualEndDateTime: actualEndDateTime
-            assignedLicenses: 1
-            lastModifiedDateTime: lastModifiedDateTime
-            lastModifiedBy: lastModifiedBy
-            createdDateTime: createdDateTime
-            endDateTime: endDateTime
-            numberOfLicenses: 6
-            licenseType: null
-            autoAssign: true
-            startDateTime: startDateTime
-            createdBy: createdBy
-            tenantId: tenantId
-            subscriptionStatus: null
-            subscriptionId: subscriptionId
-            applicationId: applicationId
-            lastMaxAssignedLicensesDateTime: lastMaxAssignedLicensesDateTime
-            maxAssignedLicenses: 5
-          identityProviders:
-          - null
-          - null
-          lastModifiedDateTime: lastModifiedDateTime
+          isDemo: true
+        - tenantType: tenantType
+          tenantStatus: tenantStatus
           organizationName: organizationName
-          lastModifiedBy: lastModifiedBy
-          domains:
-          - domains
-          - domains
-          createdDateTime: createdDateTime
-          isDemo: true
-          enforceMfa: true
-          createdBy: createdBy
           organizationIdentifier: organizationIdentifier
-          tenantId: tenantId
+          tenantId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: state
+          isDemo: true
         preferences:
-        - code: code
+        - clientId: clientId
+          code: code
+          tenantId: tenantId
           value: value
-        - code: code
+        - clientId: clientId
+          code: code
+          tenantId: tenantId
           value: value
+        extensions:
+        - code: code
+          data: data
+        - code: code
+          data: data
         browserDebugEnabled: true
         userName: userName
         email: email
@@ -247,19 +389,64 @@ components:
         tenants:
           description: List of tenants associated with this user
           items:
-            $ref: '#/components/schemas/TenantApi.Tenant.V1.TenantListResponse'
+            $ref: '#/components/schemas/EdGraph.Platform.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.UserCacheTenantResponse'
           nullable: true
           type: array
         browserDebugEnabled:
           description: Flag to indicate if the debug mode for user is enabled
           type: boolean
+        extensions:
+          items:
+            $ref: '#/components/schemas/IdentityApi.User.V1.UserExtension'
+          nullable: true
+          type: array
+      type: object
+    EdGraph.Platform.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.UserCacheTenantResponse:
+      additionalProperties: false
+      example:
+        tenantType: tenantType
+        tenantStatus: tenantStatus
+        organizationName: organizationName
+        organizationIdentifier: organizationIdentifier
+        tenantId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        state: state
+        isDemo: true
+      properties:
+        tenantId:
+          format: uuid
+          type: string
+        tenantType:
+          nullable: true
+          type: string
+        organizationIdentifier:
+          nullable: true
+          type: string
+        organizationName:
+          nullable: true
+          type: string
+        state:
+          nullable: true
+          type: string
+        tenantStatus:
+          nullable: true
+          type: string
+        isDemo:
+          type: boolean
       type: object
     IdentityApi.User.V1.Preference:
       additionalProperties: false
       example:
+        clientId: clientId
         code: code
+        tenantId: tenantId
         value: value
       properties:
+        tenantId:
+          nullable: true
+          type: string
+        clientId:
+          nullable: true
+          type: string
         code:
           nullable: true
           type: string
@@ -267,10 +454,65 @@ components:
           nullable: true
           type: string
       type: object
-    IdentityApi.User.V1.UpdateUserPreferenceRequest:
+    IdentityApi.User.V1.SetUserExtensionRequest:
       additionalProperties: false
       properties:
-        claimName:
+        userId:
+          nullable: true
+          type: string
+        code:
+          nullable: true
+          type: string
+        data:
+          nullable: true
+          type: string
+        dataType:
+          nullable: true
+          type: string
+      type: object
+    IdentityApi.User.V1.UserExtension:
+      additionalProperties: false
+      example:
+        code: code
+        data: data
+      properties:
+        code:
+          nullable: true
+          type: string
+        data:
+          nullable: true
+          type: string
+      type: object
+    IdentityApi.User.V1.UserExtensionRemovedResponse:
+      additionalProperties: false
+      example:
+        userId: userId
+      properties:
+        userId:
+          nullable: true
+          type: string
+      type: object
+    IdentityApi.User.V1.UserExtensionSetResponse:
+      additionalProperties: false
+      example:
+        userId: userId
+      properties:
+        userId:
+          nullable: true
+          type: string
+      type: object
+    IdentityApi.User.V1.UserPreferenceUpdatedResponse:
+      additionalProperties: false
+      example:
+        clientId: clientId
+        code: code
+        tenantId: tenantId
+        value: value
+      properties:
+        tenantId:
+          nullable: true
+          type: string
+        clientId:
           nullable: true
           type: string
         code:
@@ -280,9 +522,16 @@ components:
           nullable: true
           type: string
       type: object
-    Microsoft.AspNetCore.Mvc.ProblemDetails:
+    Microsoft.AspNetCore.Mvc.ValidationProblemDetails:
       additionalProperties: {}
       properties:
+        errors:
+          additionalProperties:
+            items:
+              type: string
+            type: array
+          nullable: true
+          type: object
         type:
           nullable: true
           type: string
@@ -300,231 +549,6 @@ components:
           nullable: true
           type: string
       type: object
-    TenantApi.Tenant.V1.LicenseType:
-      enum:
-      - Unknown
-      - Full
-      - Trial
-      type: string
-    TenantApi.Tenant.V1.SubscriptionListResponse:
-      additionalProperties: false
-      example:
-        gracePeriod: 0
-        actualEndDateTime: actualEndDateTime
-        assignedLicenses: 1
-        lastModifiedDateTime: lastModifiedDateTime
-        lastModifiedBy: lastModifiedBy
-        createdDateTime: createdDateTime
-        endDateTime: endDateTime
-        numberOfLicenses: 6
-        licenseType: null
-        autoAssign: true
-        startDateTime: startDateTime
-        createdBy: createdBy
-        tenantId: tenantId
-        subscriptionStatus: null
-        subscriptionId: subscriptionId
-        applicationId: applicationId
-        lastMaxAssignedLicensesDateTime: lastMaxAssignedLicensesDateTime
-        maxAssignedLicenses: 5
-      properties:
-        tenantId:
-          nullable: true
-          type: string
-        subscriptionId:
-          nullable: true
-          type: string
-        applicationId:
-          nullable: true
-          type: string
-        startDateTime:
-          nullable: true
-          type: string
-        endDateTime:
-          nullable: true
-          type: string
-        actualEndDateTime:
-          nullable: true
-          type: string
-        gracePeriod:
-          format: int32
-          type: integer
-        numberOfLicenses:
-          format: int32
-          type: integer
-        assignedLicenses:
-          format: int32
-          type: integer
-        maxAssignedLicenses:
-          format: int32
-          type: integer
-        lastMaxAssignedLicensesDateTime:
-          nullable: true
-          type: string
-        licenseType:
-          $ref: '#/components/schemas/TenantApi.Tenant.V1.LicenseType'
-        subscriptionStatus:
-          $ref: '#/components/schemas/TenantApi.Tenant.V1.SubscriptionStatus'
-        autoAssign:
-          type: boolean
-        createdBy:
-          nullable: true
-          type: string
-        createdDateTime:
-          nullable: true
-          type: string
-        lastModifiedBy:
-          nullable: true
-          type: string
-        lastModifiedDateTime:
-          nullable: true
-          type: string
-      type: object
-    TenantApi.Tenant.V1.SubscriptionStatus:
-      enum:
-      - Unknown
-      - Active
-      - Inactive
-      - Pending
-      - Rejected
-      type: string
-    TenantApi.Tenant.V1.TenantIdentityProviders:
-      enum:
-      - Local
-      - Aad
-      - Google
-      - Adfs
-      type: string
-    TenantApi.Tenant.V1.TenantListResponse:
-      additionalProperties: false
-      example:
-        tenantType: null
-        tenantStatus: null
-        subscriptionsMigrated: true
-        subscriptions:
-        - gracePeriod: 0
-          actualEndDateTime: actualEndDateTime
-          assignedLicenses: 1
-          lastModifiedDateTime: lastModifiedDateTime
-          lastModifiedBy: lastModifiedBy
-          createdDateTime: createdDateTime
-          endDateTime: endDateTime
-          numberOfLicenses: 6
-          licenseType: null
-          autoAssign: true
-          startDateTime: startDateTime
-          createdBy: createdBy
-          tenantId: tenantId
-          subscriptionStatus: null
-          subscriptionId: subscriptionId
-          applicationId: applicationId
-          lastMaxAssignedLicensesDateTime: lastMaxAssignedLicensesDateTime
-          maxAssignedLicenses: 5
-        - gracePeriod: 0
-          actualEndDateTime: actualEndDateTime
-          assignedLicenses: 1
-          lastModifiedDateTime: lastModifiedDateTime
-          lastModifiedBy: lastModifiedBy
-          createdDateTime: createdDateTime
-          endDateTime: endDateTime
-          numberOfLicenses: 6
-          licenseType: null
-          autoAssign: true
-          startDateTime: startDateTime
-          createdBy: createdBy
-          tenantId: tenantId
-          subscriptionStatus: null
-          subscriptionId: subscriptionId
-          applicationId: applicationId
-          lastMaxAssignedLicensesDateTime: lastMaxAssignedLicensesDateTime
-          maxAssignedLicenses: 5
-        identityProviders:
-        - null
-        - null
-        lastModifiedDateTime: lastModifiedDateTime
-        organizationName: organizationName
-        lastModifiedBy: lastModifiedBy
-        domains:
-        - domains
-        - domains
-        createdDateTime: createdDateTime
-        isDemo: true
-        enforceMfa: true
-        createdBy: createdBy
-        organizationIdentifier: organizationIdentifier
-        tenantId: tenantId
-        state: state
-      properties:
-        tenantId:
-          nullable: true
-          type: string
-        tenantType:
-          $ref: '#/components/schemas/TenantApi.Tenant.V1.TenantType'
-        organizationIdentifier:
-          nullable: true
-          type: string
-        organizationName:
-          nullable: true
-          type: string
-        state:
-          nullable: true
-          type: string
-        tenantStatus:
-          $ref: '#/components/schemas/TenantApi.Tenant.V1.TenantStatus'
-        isDemo:
-          type: boolean
-        enforceMfa:
-          type: boolean
-        subscriptionsMigrated:
-          type: boolean
-        subscriptions:
-          items:
-            $ref: '#/components/schemas/TenantApi.Tenant.V1.SubscriptionListResponse'
-          nullable: true
-          readOnly: true
-          type: array
-        domains:
-          items:
-            type: string
-          nullable: true
-          readOnly: true
-          type: array
-        createdBy:
-          nullable: true
-          type: string
-        createdDateTime:
-          nullable: true
-          type: string
-        lastModifiedBy:
-          nullable: true
-          type: string
-        lastModifiedDateTime:
-          nullable: true
-          type: string
-        identityProviders:
-          items:
-            $ref: '#/components/schemas/TenantApi.Tenant.V1.TenantIdentityProviders'
-          nullable: true
-          readOnly: true
-          type: array
-      type: object
-    TenantApi.Tenant.V1.TenantStatus:
-      enum:
-      - Unknown
-      - Active
-      - Inactive
-      type: string
-    TenantApi.Tenant.V1.TenantType:
-      enum:
-      - Unknown
-      - Internal
-      - State
-      - Collaborative
-      - District
-      - Partner
-      - Teacher
-      - Student
-      type: string
   securitySchemes:
     oauth2:
       description: Use bearer token generated from an OpenId server
@@ -532,6 +556,6 @@ components:
         clientCredentials:
           scopes:
             https://api.edgraph.com/tenant: EdGraph Platform - Tenant Api
-          tokenUrl: https://login.edgraph.com/connect/token
+          tokenUrl: https://login.edgraph.dev/connect/token
       type: oauth2
 

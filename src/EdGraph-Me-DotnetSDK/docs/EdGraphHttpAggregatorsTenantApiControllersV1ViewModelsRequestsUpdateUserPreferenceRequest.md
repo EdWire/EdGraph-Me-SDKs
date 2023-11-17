@@ -1,10 +1,10 @@
-# EdGraph.Me.Client.Model.IdentityApiUserV1Preference
+# EdGraph.Me.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TenantId** | **string** |  | [optional] 
+**TenantId** | **Guid?** |  | [optional] 
 **ClientId** | **string** |  | [optional] 
 **Code** | **string** |  | [optional] 
 **Value** | **string** |  | [optional] 

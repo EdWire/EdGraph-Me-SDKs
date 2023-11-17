@@ -26,37 +26,31 @@ using OpenAPIDateConverter = EdGraph.Me.Client.Client.OpenAPIDateConverter;
 namespace EdGraph.Me.Client.Model
 {
     /// <summary>
-    /// IdentityApiUserV1Preference
+    /// IdentityApiUserV1SetUserExtensionRequest
     /// </summary>
-    [DataContract(Name = "IdentityApi.User.V1.Preference")]
-    public partial class IdentityApiUserV1Preference : IEquatable<IdentityApiUserV1Preference>, IValidatableObject
+    [DataContract(Name = "IdentityApi.User.V1.SetUserExtensionRequest")]
+    public partial class IdentityApiUserV1SetUserExtensionRequest : IEquatable<IdentityApiUserV1SetUserExtensionRequest>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="IdentityApiUserV1Preference" /> class.
+        /// Initializes a new instance of the <see cref="IdentityApiUserV1SetUserExtensionRequest" /> class.
         /// </summary>
-        /// <param name="tenantId">tenantId.</param>
-        /// <param name="clientId">clientId.</param>
+        /// <param name="userId">userId.</param>
         /// <param name="code">code.</param>
-        /// <param name="value">value.</param>
-        public IdentityApiUserV1Preference(string tenantId = default(string), string clientId = default(string), string code = default(string), string value = default(string))
+        /// <param name="data">data.</param>
+        /// <param name="dataType">dataType.</param>
+        public IdentityApiUserV1SetUserExtensionRequest(string userId = default(string), string code = default(string), string data = default(string), string dataType = default(string))
         {
-            this.TenantId = tenantId;
-            this.ClientId = clientId;
+            this.UserId = userId;
             this.Code = code;
-            this.Value = value;
+            this.Data = data;
+            this.DataType = dataType;
         }
 
         /// <summary>
-        /// Gets or Sets TenantId
+        /// Gets or Sets UserId
         /// </summary>
-        [DataMember(Name = "tenantId", EmitDefaultValue = true)]
-        public string TenantId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ClientId
-        /// </summary>
-        [DataMember(Name = "clientId", EmitDefaultValue = true)]
-        public string ClientId { get; set; }
+        [DataMember(Name = "userId", EmitDefaultValue = true)]
+        public string UserId { get; set; }
 
         /// <summary>
         /// Gets or Sets Code
@@ -65,10 +59,16 @@ namespace EdGraph.Me.Client.Model
         public string Code { get; set; }
 
         /// <summary>
-        /// Gets or Sets Value
+        /// Gets or Sets Data
         /// </summary>
-        [DataMember(Name = "value", EmitDefaultValue = true)]
-        public string Value { get; set; }
+        [DataMember(Name = "data", EmitDefaultValue = true)]
+        public string Data { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DataType
+        /// </summary>
+        [DataMember(Name = "dataType", EmitDefaultValue = true)]
+        public string DataType { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -77,11 +77,11 @@ namespace EdGraph.Me.Client.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class IdentityApiUserV1Preference {\n");
-            sb.Append("  TenantId: ").Append(TenantId).Append("\n");
-            sb.Append("  ClientId: ").Append(ClientId).Append("\n");
+            sb.Append("class IdentityApiUserV1SetUserExtensionRequest {\n");
+            sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("  Code: ").Append(Code).Append("\n");
-            sb.Append("  Value: ").Append(Value).Append("\n");
+            sb.Append("  Data: ").Append(Data).Append("\n");
+            sb.Append("  DataType: ").Append(DataType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -102,15 +102,15 @@ namespace EdGraph.Me.Client.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as IdentityApiUserV1Preference);
+            return this.Equals(input as IdentityApiUserV1SetUserExtensionRequest);
         }
 
         /// <summary>
-        /// Returns true if IdentityApiUserV1Preference instances are equal
+        /// Returns true if IdentityApiUserV1SetUserExtensionRequest instances are equal
         /// </summary>
-        /// <param name="input">Instance of IdentityApiUserV1Preference to be compared</param>
+        /// <param name="input">Instance of IdentityApiUserV1SetUserExtensionRequest to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(IdentityApiUserV1Preference input)
+        public bool Equals(IdentityApiUserV1SetUserExtensionRequest input)
         {
             if (input == null)
             {
@@ -118,14 +118,9 @@ namespace EdGraph.Me.Client.Model
             }
             return 
                 (
-                    this.TenantId == input.TenantId ||
-                    (this.TenantId != null &&
-                    this.TenantId.Equals(input.TenantId))
-                ) && 
-                (
-                    this.ClientId == input.ClientId ||
-                    (this.ClientId != null &&
-                    this.ClientId.Equals(input.ClientId))
+                    this.UserId == input.UserId ||
+                    (this.UserId != null &&
+                    this.UserId.Equals(input.UserId))
                 ) && 
                 (
                     this.Code == input.Code ||
@@ -133,9 +128,14 @@ namespace EdGraph.Me.Client.Model
                     this.Code.Equals(input.Code))
                 ) && 
                 (
-                    this.Value == input.Value ||
-                    (this.Value != null &&
-                    this.Value.Equals(input.Value))
+                    this.Data == input.Data ||
+                    (this.Data != null &&
+                    this.Data.Equals(input.Data))
+                ) && 
+                (
+                    this.DataType == input.DataType ||
+                    (this.DataType != null &&
+                    this.DataType.Equals(input.DataType))
                 );
         }
 
@@ -148,21 +148,21 @@ namespace EdGraph.Me.Client.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.TenantId != null)
+                if (this.UserId != null)
                 {
-                    hashCode = (hashCode * 59) + this.TenantId.GetHashCode();
-                }
-                if (this.ClientId != null)
-                {
-                    hashCode = (hashCode * 59) + this.ClientId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.UserId.GetHashCode();
                 }
                 if (this.Code != null)
                 {
                     hashCode = (hashCode * 59) + this.Code.GetHashCode();
                 }
-                if (this.Value != null)
+                if (this.Data != null)
                 {
-                    hashCode = (hashCode * 59) + this.Value.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Data.GetHashCode();
+                }
+                if (this.DataType != null)
+                {
+                    hashCode = (hashCode * 59) + this.DataType.GetHashCode();
                 }
                 return hashCode;
             }
