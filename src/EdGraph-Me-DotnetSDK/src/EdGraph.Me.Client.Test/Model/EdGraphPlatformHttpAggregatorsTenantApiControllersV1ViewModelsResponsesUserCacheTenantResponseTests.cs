@@ -116,5 +116,23 @@ namespace EdGraph.Me.Client.Test.Model
         {
             // TODO unit test for the property 'IsDemo'
         }
+
+        /// <summary>
+        /// Test the property 'EducationOrganizations'
+        /// </summary>
+        [Fact]
+        public void EducationOrganizationsTest()
+        {
+            // TODO unit test for the property 'EducationOrganizations'
+        }
+
+        /// <summary>
+        /// Test the property 'Licenses'
+        /// </summary>
+        [Fact]
+        public void LicensesTest()
+        {
+            // TODO unit test for the property 'Licenses'
+        }
     }
 }

@@ -41,7 +41,9 @@ namespace EdGraph.Me.Client.Model
         /// <param name="state">state.</param>
         /// <param name="tenantStatus">tenantStatus.</param>
         /// <param name="isDemo">isDemo.</param>
-        public EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse(Guid tenantId = default(Guid), string tenantType = default(string), string organizationIdentifier = default(string), string organizationName = default(string), string state = default(string), string tenantStatus = default(string), bool isDemo = default(bool))
+        /// <param name="educationOrganizations">educationOrganizations.</param>
+        /// <param name="licenses">licenses.</param>
+        public EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse(Guid tenantId = default(Guid), string tenantType = default(string), string organizationIdentifier = default(string), string organizationName = default(string), string state = default(string), string tenantStatus = default(string), bool isDemo = default(bool), List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantEducationOrganizationResponse> educationOrganizations = default(List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantEducationOrganizationResponse>), List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserTenantLicense> licenses = default(List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserTenantLicense>))
         {
             this.TenantId = tenantId;
             this.TenantType = tenantType;
@@ -50,6 +52,8 @@ namespace EdGraph.Me.Client.Model
             this.State = state;
             this.TenantStatus = tenantStatus;
             this.IsDemo = isDemo;
+            this.EducationOrganizations = educationOrganizations;
+            this.Licenses = licenses;
         }
 
         /// <summary>
@@ -95,6 +99,18 @@ namespace EdGraph.Me.Client.Model
         public bool IsDemo { get; set; }
 
         /// <summary>
+        /// Gets or Sets EducationOrganizations
+        /// </summary>
+        [DataMember(Name = "educationOrganizations", EmitDefaultValue = true)]
+        public List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantEducationOrganizationResponse> EducationOrganizations { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Licenses
+        /// </summary>
+        [DataMember(Name = "licenses", EmitDefaultValue = true)]
+        public List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserTenantLicense> Licenses { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -109,6 +125,8 @@ namespace EdGraph.Me.Client.Model
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  TenantStatus: ").Append(TenantStatus).Append("\n");
             sb.Append("  IsDemo: ").Append(IsDemo).Append("\n");
+            sb.Append("  EducationOrganizations: ").Append(EducationOrganizations).Append("\n");
+            sb.Append("  Licenses: ").Append(Licenses).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -177,6 +195,18 @@ namespace EdGraph.Me.Client.Model
                 (
                     this.IsDemo == input.IsDemo ||
                     this.IsDemo.Equals(input.IsDemo)
+                ) && 
+                (
+                    this.EducationOrganizations == input.EducationOrganizations ||
+                    this.EducationOrganizations != null &&
+                    input.EducationOrganizations != null &&
+                    this.EducationOrganizations.SequenceEqual(input.EducationOrganizations)
+                ) && 
+                (
+                    this.Licenses == input.Licenses ||
+                    this.Licenses != null &&
+                    input.Licenses != null &&
+                    this.Licenses.SequenceEqual(input.Licenses)
                 );
         }
 
@@ -214,6 +244,14 @@ namespace EdGraph.Me.Client.Model
                     hashCode = (hashCode * 59) + this.TenantStatus.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.IsDemo.GetHashCode();
+                if (this.EducationOrganizations != null)
+                {
+                    hashCode = (hashCode * 59) + this.EducationOrganizations.GetHashCode();
+                }
+                if (this.Licenses != null)
+                {
+                    hashCode = (hashCode * 59) + this.Licenses.GetHashCode();
+                }
                 return hashCode;
             }
         }

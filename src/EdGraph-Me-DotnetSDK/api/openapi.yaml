@@ -334,6 +334,48 @@ components:
         tenants:
         - tenantType: tenantType
           tenantStatus: tenantStatus
+          educationOrganizations:
+          - shortNameOfInstitution: shortNameOfInstitution
+            staffClassifications:
+            - staffClassifications
+            - staffClassifications
+            educationOrganizationId: 0
+            source: source
+            nameOfInstitution: nameOfInstitution
+          - shortNameOfInstitution: shortNameOfInstitution
+            staffClassifications:
+            - staffClassifications
+            - staffClassifications
+            educationOrganizationId: 0
+            source: source
+            nameOfInstitution: nameOfInstitution
+          licenses:
+          - roles:
+            - role: role
+              isImplicitlyAssigned: true
+              educationOrganizationId: 6
+              staffClassification: staffClassification
+              status: status
+            - role: role
+              isImplicitlyAssigned: true
+              educationOrganizationId: 6
+              staffClassification: staffClassification
+              status: status
+            applicationId: applicationId
+            applicationName: applicationName
+          - roles:
+            - role: role
+              isImplicitlyAssigned: true
+              educationOrganizationId: 6
+              staffClassification: staffClassification
+              status: status
+            - role: role
+              isImplicitlyAssigned: true
+              educationOrganizationId: 6
+              staffClassification: staffClassification
+              status: status
+            applicationId: applicationId
+            applicationName: applicationName
           organizationName: organizationName
           organizationIdentifier: organizationIdentifier
           tenantId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -341,6 +383,48 @@ components:
           isDemo: true
         - tenantType: tenantType
           tenantStatus: tenantStatus
+          educationOrganizations:
+          - shortNameOfInstitution: shortNameOfInstitution
+            staffClassifications:
+            - staffClassifications
+            - staffClassifications
+            educationOrganizationId: 0
+            source: source
+            nameOfInstitution: nameOfInstitution
+          - shortNameOfInstitution: shortNameOfInstitution
+            staffClassifications:
+            - staffClassifications
+            - staffClassifications
+            educationOrganizationId: 0
+            source: source
+            nameOfInstitution: nameOfInstitution
+          licenses:
+          - roles:
+            - role: role
+              isImplicitlyAssigned: true
+              educationOrganizationId: 6
+              staffClassification: staffClassification
+              status: status
+            - role: role
+              isImplicitlyAssigned: true
+              educationOrganizationId: 6
+              staffClassification: staffClassification
+              status: status
+            applicationId: applicationId
+            applicationName: applicationName
+          - roles:
+            - role: role
+              isImplicitlyAssigned: true
+              educationOrganizationId: 6
+              staffClassification: staffClassification
+              status: status
+            - role: role
+              isImplicitlyAssigned: true
+              educationOrganizationId: 6
+              staffClassification: staffClassification
+              status: status
+            applicationId: applicationId
+            applicationName: applicationName
           organizationName: organizationName
           organizationIdentifier: organizationIdentifier
           tenantId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -401,11 +485,82 @@ components:
           nullable: true
           type: array
       type: object
+    EdGraph.Platform.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.UserCacheTenantEducationOrganizationResponse:
+      additionalProperties: false
+      example:
+        shortNameOfInstitution: shortNameOfInstitution
+        staffClassifications:
+        - staffClassifications
+        - staffClassifications
+        educationOrganizationId: 0
+        source: source
+        nameOfInstitution: nameOfInstitution
+      properties:
+        educationOrganizationId:
+          format: int32
+          type: integer
+        shortNameOfInstitution:
+          nullable: true
+          type: string
+        nameOfInstitution:
+          nullable: true
+          type: string
+        staffClassifications:
+          items:
+            type: string
+          nullable: true
+          type: array
+        source:
+          nullable: true
+          type: string
+      type: object
     EdGraph.Platform.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.UserCacheTenantResponse:
       additionalProperties: false
       example:
         tenantType: tenantType
         tenantStatus: tenantStatus
+        educationOrganizations:
+        - shortNameOfInstitution: shortNameOfInstitution
+          staffClassifications:
+          - staffClassifications
+          - staffClassifications
+          educationOrganizationId: 0
+          source: source
+          nameOfInstitution: nameOfInstitution
+        - shortNameOfInstitution: shortNameOfInstitution
+          staffClassifications:
+          - staffClassifications
+          - staffClassifications
+          educationOrganizationId: 0
+          source: source
+          nameOfInstitution: nameOfInstitution
+        licenses:
+        - roles:
+          - role: role
+            isImplicitlyAssigned: true
+            educationOrganizationId: 6
+            staffClassification: staffClassification
+            status: status
+          - role: role
+            isImplicitlyAssigned: true
+            educationOrganizationId: 6
+            staffClassification: staffClassification
+            status: status
+          applicationId: applicationId
+          applicationName: applicationName
+        - roles:
+          - role: role
+            isImplicitlyAssigned: true
+            educationOrganizationId: 6
+            staffClassification: staffClassification
+            status: status
+          - role: role
+            isImplicitlyAssigned: true
+            educationOrganizationId: 6
+            staffClassification: staffClassification
+            status: status
+          applicationId: applicationId
+          applicationName: applicationName
         organizationName: organizationName
         organizationIdentifier: organizationIdentifier
         tenantId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -432,6 +587,70 @@ components:
           type: string
         isDemo:
           type: boolean
+        educationOrganizations:
+          items:
+            $ref: '#/components/schemas/EdGraph.Platform.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.UserCacheTenantEducationOrganizationResponse'
+          nullable: true
+          type: array
+        licenses:
+          items:
+            $ref: '#/components/schemas/EdGraph.Platform.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.UserTenantLicense'
+          nullable: true
+          type: array
+      type: object
+    EdGraph.Platform.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.UserTenantLicense:
+      additionalProperties: false
+      example:
+        roles:
+        - role: role
+          isImplicitlyAssigned: true
+          educationOrganizationId: 6
+          staffClassification: staffClassification
+          status: status
+        - role: role
+          isImplicitlyAssigned: true
+          educationOrganizationId: 6
+          staffClassification: staffClassification
+          status: status
+        applicationId: applicationId
+        applicationName: applicationName
+      properties:
+        applicationId:
+          nullable: true
+          type: string
+        applicationName:
+          nullable: true
+          type: string
+        roles:
+          items:
+            $ref: '#/components/schemas/EdGraph.Platform.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.UserTenantLicenseRole'
+          nullable: true
+          type: array
+      type: object
+    EdGraph.Platform.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.UserTenantLicenseRole:
+      additionalProperties: false
+      example:
+        role: role
+        isImplicitlyAssigned: true
+        educationOrganizationId: 6
+        staffClassification: staffClassification
+        status: status
+      properties:
+        role:
+          nullable: true
+          type: string
+        isImplicitlyAssigned:
+          type: boolean
+        status:
+          nullable: true
+          type: string
+        educationOrganizationId:
+          format: int32
+          nullable: true
+          type: integer
+        staffClassification:
+          nullable: true
+          type: string
       type: object
     IdentityApi.User.V1.Preference:
       additionalProperties: false
