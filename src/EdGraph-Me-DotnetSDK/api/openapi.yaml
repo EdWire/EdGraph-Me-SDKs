@@ -4,10 +4,10 @@ info:
   title: Me Api
   version: v1.0
 servers:
-- url: https://api.edgraph.dev/tenant
+- url: https://api.int.txedexchange.net/tenant
 security:
 - oauth2:
-  - https://api.edgraph.com/tenant
+  - https://api.edgraph.com/auth/tenant
 paths:
   /me/extensions/{code}:
     delete:
@@ -282,10 +282,109 @@ paths:
         \ the user's preferences and its associated tenants"
       tags:
       - My Profile
+  /me/tenants:
+    get:
+      operationId: GetUserTenants
+      parameters:
+      - explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 10
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: orderBy
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: api-version
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: header
+        name: X-version
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityApi.User.V1.UserTenantProfilePaginatedItemsViewModel'
+          description: The requested resource was successfully retrieved.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: The resource could not be found.
+      summary: Retrieves the Tenants of the User that is currently logged in.
+      tags:
+      - My Tenants
 components:
   schemas:
     EdGraph.Common.Errors.Core.ProblemDetails:
       additionalProperties: false
+      example:
+        extensions:
+          key: ""
+        instance: instance
+        details: details
+        type: type
+        title: title
+        status: 0
       properties:
         type:
           nullable: true
@@ -446,6 +545,57 @@ components:
           data: data
         browserDebugEnabled: true
         userName: userName
+        tenantsTotalCount: 1
+        selectedTenant:
+          tenantType: tenantType
+          tenantStatus: tenantStatus
+          educationOrganizations:
+          - shortNameOfInstitution: shortNameOfInstitution
+            staffClassifications:
+            - staffClassifications
+            - staffClassifications
+            educationOrganizationId: 0
+            source: source
+            nameOfInstitution: nameOfInstitution
+          - shortNameOfInstitution: shortNameOfInstitution
+            staffClassifications:
+            - staffClassifications
+            - staffClassifications
+            educationOrganizationId: 0
+            source: source
+            nameOfInstitution: nameOfInstitution
+          licenses:
+          - roles:
+            - role: role
+              isImplicitlyAssigned: true
+              educationOrganizationId: 6
+              staffClassification: staffClassification
+              status: status
+            - role: role
+              isImplicitlyAssigned: true
+              educationOrganizationId: 6
+              staffClassification: staffClassification
+              status: status
+            applicationId: applicationId
+            applicationName: applicationName
+          - roles:
+            - role: role
+              isImplicitlyAssigned: true
+              educationOrganizationId: 6
+              staffClassification: staffClassification
+              status: status
+            - role: role
+              isImplicitlyAssigned: true
+              educationOrganizationId: 6
+              staffClassification: staffClassification
+              status: status
+            applicationId: applicationId
+            applicationName: applicationName
+          organizationName: organizationName
+          organizationIdentifier: organizationIdentifier
+          tenantId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: state
+          isDemo: true
         email: email
       properties:
         userName:
@@ -484,6 +634,12 @@ components:
             $ref: '#/components/schemas/IdentityApi.User.V1.UserExtension'
           nullable: true
           type: array
+        selectedTenant:
+          $ref: '#/components/schemas/EdGraph.Platform.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.UserCacheTenantResponse'
+        tenantsTotalCount:
+          description: The total count of active tenants associated with this user
+          format: int32
+          type: integer
       type: object
     EdGraph.Platform.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.UserCacheTenantEducationOrganizationResponse:
       additionalProperties: false
@@ -689,6 +845,23 @@ components:
           nullable: true
           type: string
       type: object
+    IdentityApi.User.V1.TenantStatus:
+      enum:
+      - Unknown
+      - Active
+      - Inactive
+      type: string
+    IdentityApi.User.V1.TenantType:
+      enum:
+      - Unknown
+      - Internal
+      - State
+      - Collaborative
+      - District
+      - Partner
+      - Teacher
+      - Student
+      type: string
     IdentityApi.User.V1.UserExtension:
       additionalProperties: false
       example:
@@ -741,8 +914,175 @@ components:
           nullable: true
           type: string
       type: object
+    IdentityApi.User.V1.UserTenantProfile:
+      additionalProperties: false
+      example:
+        tenantType: Unknown
+        tenantStatus: Unknown
+        educationOrganizations:
+        - "{}"
+        - "{}"
+        licenses:
+        - "{}"
+        - "{}"
+        organizationName: organizationName
+        organizationIdentifier: organizationIdentifier
+        tenantId: tenantId
+        state: state
+        isDemo: true
+      properties:
+        tenantId:
+          nullable: true
+          type: string
+        tenantType:
+          $ref: '#/components/schemas/IdentityApi.User.V1.TenantType'
+        tenantStatus:
+          $ref: '#/components/schemas/IdentityApi.User.V1.TenantStatus'
+        organizationIdentifier:
+          nullable: true
+          type: string
+        organizationName:
+          nullable: true
+          type: string
+        state:
+          nullable: true
+          type: string
+        isDemo:
+          nullable: true
+          type: boolean
+        educationOrganizations:
+          items:
+            $ref: '#/components/schemas/IdentityApi.User.V1.UserTenantProfile+Types+UserTenantEducationOrganizationProfile'
+          nullable: true
+          readOnly: true
+          type: array
+        licenses:
+          items:
+            $ref: '#/components/schemas/IdentityApi.User.V1.UserTenantProfile+Types+UserTenantLicenseProfile'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    IdentityApi.User.V1.UserTenantProfile+Types+UserTenantEducationOrganizationProfile:
+      additionalProperties: false
+      properties:
+        educationOrganizationId:
+          format: int32
+          nullable: true
+          type: integer
+        shortNameOfInstitution:
+          nullable: true
+          type: string
+        nameOfInstitution:
+          nullable: true
+          type: string
+        staffClassifications:
+          items:
+            type: string
+          nullable: true
+          readOnly: true
+          type: array
+        source:
+          nullable: true
+          type: string
+      type: object
+    IdentityApi.User.V1.UserTenantProfile+Types+UserTenantLicenseProfile:
+      additionalProperties: false
+      properties:
+        applicationId:
+          nullable: true
+          type: string
+        applicationName:
+          nullable: true
+          type: string
+        roles:
+          items:
+            $ref: '#/components/schemas/IdentityApi.User.V1.UserTenantProfile+Types+UserTenantLicenseProfile+Types+UserTenantLicenseRoleProfile'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    IdentityApi.User.V1.UserTenantProfile+Types+UserTenantLicenseProfile+Types+UserTenantLicenseRoleProfile:
+      additionalProperties: false
+      properties:
+        role:
+          nullable: true
+          type: string
+        isImplicitlyAssigned:
+          nullable: true
+          type: boolean
+        status:
+          nullable: true
+          type: string
+        educationOrganizationId:
+          format: int32
+          nullable: true
+          type: integer
+        staffClassification:
+          nullable: true
+          type: string
+      type: object
+    IdentityApi.User.V1.UserTenantProfilePaginatedItemsViewModel:
+      additionalProperties: false
+      example:
+        data:
+        - tenantType: Unknown
+          tenantStatus: Unknown
+          educationOrganizations:
+          - "{}"
+          - "{}"
+          licenses:
+          - "{}"
+          - "{}"
+          organizationName: organizationName
+          organizationIdentifier: organizationIdentifier
+          tenantId: tenantId
+          state: state
+          isDemo: true
+        - tenantType: Unknown
+          tenantStatus: Unknown
+          educationOrganizations:
+          - "{}"
+          - "{}"
+          licenses:
+          - "{}"
+          - "{}"
+          organizationName: organizationName
+          organizationIdentifier: organizationIdentifier
+          tenantId: tenantId
+          state: state
+          isDemo: true
+        pageIndex: 0
+        count: 1
+        pageSize: 6
+      properties:
+        pageIndex:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        count:
+          format: int64
+          type: integer
+        data:
+          items:
+            $ref: '#/components/schemas/IdentityApi.User.V1.UserTenantProfile'
+          nullable: true
+          type: array
+      type: object
     Microsoft.AspNetCore.Mvc.ValidationProblemDetails:
       additionalProperties: {}
+      example:
+        instance: instance
+        detail: detail
+        type: type
+        title: title
+        errors:
+          key:
+          - errors
+          - errors
+        status: 6
       properties:
         errors:
           additionalProperties:
@@ -774,7 +1114,7 @@ components:
       flows:
         clientCredentials:
           scopes:
-            https://api.edgraph.com/tenant: EdGraph Platform - Tenant Api
-          tokenUrl: https://login.edgraph.dev/connect/token
+            https://api.edgraph.com/auth/tenant: EdGraph Platform - Tenant Api
+          tokenUrl: https://login.int.txedexchange.net/connect/token
       type: oauth2
 

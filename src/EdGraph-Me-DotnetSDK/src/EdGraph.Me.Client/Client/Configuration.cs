@@ -114,12 +114,12 @@ namespace EdGraph.Me.Client.Client
         /// <summary>
         /// Initializes a new instance of the <see cref="Configuration" /> class
         /// </summary>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("ReSharper", "VirtualMemberCallInConstructor")]
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessage("ReSharper", "VirtualMemberCallInConstructor")]
         public Configuration()
         {
             Proxy = null;
             UserAgent = WebUtility.UrlEncode("OpenAPI-Generator/1.0.0/csharp");
-            BasePath = "https://api.edgraph.dev/tenant";
+            BasePath = "https://api.int.txedexchange.net/tenant";
             DefaultHeaders = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
             ApiKeyPrefix = new ConcurrentDictionary<string, string>();
@@ -127,7 +127,7 @@ namespace EdGraph.Me.Client.Client
             {
                 {
                     new Dictionary<string, object> {
-                        {"url", "https://api.edgraph.dev/tenant"},
+                        {"url", "https://api.int.txedexchange.net/tenant"},
                         {"description", "No description provided"},
                     }
                 }
@@ -143,12 +143,12 @@ namespace EdGraph.Me.Client.Client
         /// <summary>
         /// Initializes a new instance of the <see cref="Configuration" /> class
         /// </summary>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("ReSharper", "VirtualMemberCallInConstructor")]
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessage("ReSharper", "VirtualMemberCallInConstructor")]
         public Configuration(
             IDictionary<string, string> defaultHeaders,
             IDictionary<string, string> apiKey,
             IDictionary<string, string> apiKeyPrefix,
-            string basePath = "https://api.edgraph.dev/tenant") : this()
+            string basePath = "https://api.int.txedexchange.net/tenant") : this()
         {
             if (string.IsNullOrWhiteSpace(basePath))
                 throw new ArgumentException("The provided basePath is invalid.", "basePath");
@@ -298,6 +298,12 @@ namespace EdGraph.Me.Client.Client
         /// </summary>
         /// <value>The OAuth Client Secret.</value>
         public virtual string OAuthClientSecret { get; set; }
+
+        /// <summary>
+        /// Gets or sets the client scope for OAuth2 authentication.
+        /// </summary>
+        /// <value>The OAuth Client Scope.</value>
+        public virtual string? OAuthScope { get; set; }
 
         /// <summary>
         /// Gets or sets the flow for OAuth2 authentication.
@@ -627,6 +633,7 @@ namespace EdGraph.Me.Client.Client
                 OAuthTokenUrl = second.OAuthTokenUrl ?? first.OAuthTokenUrl,
                 OAuthClientId = second.OAuthClientId ?? first.OAuthClientId,
                 OAuthClientSecret = second.OAuthClientSecret ?? first.OAuthClientSecret,
+                OAuthScope = second.OAuthScope ?? first.OAuthScope,
                 OAuthFlow = second.OAuthFlow ?? first.OAuthFlow,
                 TempFolderPath = second.TempFolderPath ?? first.TempFolderPath,
                 DateTimeFormat = second.DateTimeFormat ?? first.DateTimeFormat,

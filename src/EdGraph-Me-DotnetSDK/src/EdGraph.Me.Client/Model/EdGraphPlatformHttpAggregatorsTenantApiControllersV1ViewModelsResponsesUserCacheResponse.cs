@@ -29,7 +29,7 @@ namespace EdGraph.Me.Client.Model
     /// EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheResponse
     /// </summary>
     [DataContract(Name = "EdGraph.Platform.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.UserCacheResponse")]
-    public partial class EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheResponse : IEquatable<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheResponse>, IValidatableObject
+    public partial class EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheResponse : IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheResponse" /> class.
@@ -42,7 +42,9 @@ namespace EdGraph.Me.Client.Model
         /// <param name="tenants">List of tenants associated with this user.</param>
         /// <param name="browserDebugEnabled">Flag to indicate if the debug mode for user is enabled.</param>
         /// <param name="extensions">extensions.</param>
-        public EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheResponse(string userName = default(string), string email = default(string), string firstName = default(string), string lastName = default(string), List<IdentityApiUserV1Preference> preferences = default(List<IdentityApiUserV1Preference>), List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse> tenants = default(List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse>), bool browserDebugEnabled = default(bool), List<IdentityApiUserV1UserExtension> extensions = default(List<IdentityApiUserV1UserExtension>))
+        /// <param name="selectedTenant">selectedTenant.</param>
+        /// <param name="tenantsTotalCount">The total count of active tenants associated with this user.</param>
+        public EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheResponse(string userName = default(string), string email = default(string), string firstName = default(string), string lastName = default(string), List<IdentityApiUserV1Preference> preferences = default(List<IdentityApiUserV1Preference>), List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse> tenants = default(List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse>), bool browserDebugEnabled = default(bool), List<IdentityApiUserV1UserExtension> extensions = default(List<IdentityApiUserV1UserExtension>), EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse selectedTenant = default(EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse), int tenantsTotalCount = default(int))
         {
             this.UserName = userName;
             this.Email = email;
@@ -52,6 +54,8 @@ namespace EdGraph.Me.Client.Model
             this.Tenants = tenants;
             this.BrowserDebugEnabled = browserDebugEnabled;
             this.Extensions = extensions;
+            this.SelectedTenant = selectedTenant;
+            this.TenantsTotalCount = tenantsTotalCount;
         }
 
         /// <summary>
@@ -110,6 +114,19 @@ namespace EdGraph.Me.Client.Model
         public List<IdentityApiUserV1UserExtension> Extensions { get; set; }
 
         /// <summary>
+        /// Gets or Sets SelectedTenant
+        /// </summary>
+        [DataMember(Name = "selectedTenant", EmitDefaultValue = false)]
+        public EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse SelectedTenant { get; set; }
+
+        /// <summary>
+        /// The total count of active tenants associated with this user
+        /// </summary>
+        /// <value>The total count of active tenants associated with this user</value>
+        [DataMember(Name = "tenantsTotalCount", EmitDefaultValue = false)]
+        public int TenantsTotalCount { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -125,6 +142,8 @@ namespace EdGraph.Me.Client.Model
             sb.Append("  Tenants: ").Append(Tenants).Append("\n");
             sb.Append("  BrowserDebugEnabled: ").Append(BrowserDebugEnabled).Append("\n");
             sb.Append("  Extensions: ").Append(Extensions).Append("\n");
+            sb.Append("  SelectedTenant: ").Append(SelectedTenant).Append("\n");
+            sb.Append("  TenantsTotalCount: ").Append(TenantsTotalCount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -139,119 +158,11 @@ namespace EdGraph.Me.Client.Model
         }
 
         /// <summary>
-        /// Returns true if objects are equal
-        /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
-        {
-            return this.Equals(input as EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheResponse);
-        }
-
-        /// <summary>
-        /// Returns true if EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheResponse instances are equal
-        /// </summary>
-        /// <param name="input">Instance of EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheResponse to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheResponse input)
-        {
-            if (input == null)
-            {
-                return false;
-            }
-            return 
-                (
-                    this.UserName == input.UserName ||
-                    (this.UserName != null &&
-                    this.UserName.Equals(input.UserName))
-                ) && 
-                (
-                    this.Email == input.Email ||
-                    (this.Email != null &&
-                    this.Email.Equals(input.Email))
-                ) && 
-                (
-                    this.FirstName == input.FirstName ||
-                    (this.FirstName != null &&
-                    this.FirstName.Equals(input.FirstName))
-                ) && 
-                (
-                    this.LastName == input.LastName ||
-                    (this.LastName != null &&
-                    this.LastName.Equals(input.LastName))
-                ) && 
-                (
-                    this.Preferences == input.Preferences ||
-                    this.Preferences != null &&
-                    input.Preferences != null &&
-                    this.Preferences.SequenceEqual(input.Preferences)
-                ) && 
-                (
-                    this.Tenants == input.Tenants ||
-                    this.Tenants != null &&
-                    input.Tenants != null &&
-                    this.Tenants.SequenceEqual(input.Tenants)
-                ) && 
-                (
-                    this.BrowserDebugEnabled == input.BrowserDebugEnabled ||
-                    this.BrowserDebugEnabled.Equals(input.BrowserDebugEnabled)
-                ) && 
-                (
-                    this.Extensions == input.Extensions ||
-                    this.Extensions != null &&
-                    input.Extensions != null &&
-                    this.Extensions.SequenceEqual(input.Extensions)
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
-            {
-                int hashCode = 41;
-                if (this.UserName != null)
-                {
-                    hashCode = (hashCode * 59) + this.UserName.GetHashCode();
-                }
-                if (this.Email != null)
-                {
-                    hashCode = (hashCode * 59) + this.Email.GetHashCode();
-                }
-                if (this.FirstName != null)
-                {
-                    hashCode = (hashCode * 59) + this.FirstName.GetHashCode();
-                }
-                if (this.LastName != null)
-                {
-                    hashCode = (hashCode * 59) + this.LastName.GetHashCode();
-                }
-                if (this.Preferences != null)
-                {
-                    hashCode = (hashCode * 59) + this.Preferences.GetHashCode();
-                }
-                if (this.Tenants != null)
-                {
-                    hashCode = (hashCode * 59) + this.Tenants.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.BrowserDebugEnabled.GetHashCode();
-                if (this.Extensions != null)
-                {
-                    hashCode = (hashCode * 59) + this.Extensions.GetHashCode();
-                }
-                return hashCode;
-            }
-        }
-
-        /// <summary>
         /// To validate all properties of the instance
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

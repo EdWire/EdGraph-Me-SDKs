@@ -29,7 +29,7 @@ namespace EdGraph.Me.Client.Model
     /// IdentityApiUserV1UserExtension
     /// </summary>
     [DataContract(Name = "IdentityApi.User.V1.UserExtension")]
-    public partial class IdentityApiUserV1UserExtension : IEquatable<IdentityApiUserV1UserExtension>, IValidatableObject
+    public partial class IdentityApiUserV1UserExtension : IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="IdentityApiUserV1UserExtension" /> class.
@@ -78,66 +78,11 @@ namespace EdGraph.Me.Client.Model
         }
 
         /// <summary>
-        /// Returns true if objects are equal
-        /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
-        {
-            return this.Equals(input as IdentityApiUserV1UserExtension);
-        }
-
-        /// <summary>
-        /// Returns true if IdentityApiUserV1UserExtension instances are equal
-        /// </summary>
-        /// <param name="input">Instance of IdentityApiUserV1UserExtension to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(IdentityApiUserV1UserExtension input)
-        {
-            if (input == null)
-            {
-                return false;
-            }
-            return 
-                (
-                    this.Code == input.Code ||
-                    (this.Code != null &&
-                    this.Code.Equals(input.Code))
-                ) && 
-                (
-                    this.Data == input.Data ||
-                    (this.Data != null &&
-                    this.Data.Equals(input.Data))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
-            {
-                int hashCode = 41;
-                if (this.Code != null)
-                {
-                    hashCode = (hashCode * 59) + this.Code.GetHashCode();
-                }
-                if (this.Data != null)
-                {
-                    hashCode = (hashCode * 59) + this.Data.GetHashCode();
-                }
-                return hashCode;
-            }
-        }
-
-        /// <summary>
         /// To validate all properties of the instance
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

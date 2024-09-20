@@ -26,47 +26,49 @@ using OpenAPIDateConverter = EdGraph.Me.Client.Client.OpenAPIDateConverter;
 namespace EdGraph.Me.Client.Model
 {
     /// <summary>
-    /// EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse
+    /// IdentityApiUserV1UserTenantProfile
     /// </summary>
-    [DataContract(Name = "EdGraph.Platform.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.UserCacheTenantResponse")]
-    public partial class EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse : IValidatableObject
+    [DataContract(Name = "IdentityApi.User.V1.UserTenantProfile")]
+    public partial class IdentityApiUserV1UserTenantProfile : IValidatableObject
     {
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse" /> class.
+        /// Gets or Sets TenantType
+        /// </summary>
+        [DataMember(Name = "tenantType", EmitDefaultValue = false)]
+        public IdentityApiUserV1TenantType? TenantType { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TenantStatus
+        /// </summary>
+        [DataMember(Name = "tenantStatus", EmitDefaultValue = false)]
+        public IdentityApiUserV1TenantStatus? TenantStatus { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IdentityApiUserV1UserTenantProfile" /> class.
         /// </summary>
         /// <param name="tenantId">tenantId.</param>
         /// <param name="tenantType">tenantType.</param>
+        /// <param name="tenantStatus">tenantStatus.</param>
         /// <param name="organizationIdentifier">organizationIdentifier.</param>
         /// <param name="organizationName">organizationName.</param>
         /// <param name="state">state.</param>
-        /// <param name="tenantStatus">tenantStatus.</param>
         /// <param name="isDemo">isDemo.</param>
-        /// <param name="educationOrganizations">educationOrganizations.</param>
-        /// <param name="licenses">licenses.</param>
-        public EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse(Guid tenantId = default(Guid), string tenantType = default(string), string organizationIdentifier = default(string), string organizationName = default(string), string state = default(string), string tenantStatus = default(string), bool isDemo = default(bool), List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantEducationOrganizationResponse> educationOrganizations = default(List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantEducationOrganizationResponse>), List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserTenantLicense> licenses = default(List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserTenantLicense>))
+        public IdentityApiUserV1UserTenantProfile(string tenantId = default(string), IdentityApiUserV1TenantType? tenantType = default(IdentityApiUserV1TenantType?), IdentityApiUserV1TenantStatus? tenantStatus = default(IdentityApiUserV1TenantStatus?), string organizationIdentifier = default(string), string organizationName = default(string), string state = default(string), bool? isDemo = default(bool?))
         {
             this.TenantId = tenantId;
             this.TenantType = tenantType;
+            this.TenantStatus = tenantStatus;
             this.OrganizationIdentifier = organizationIdentifier;
             this.OrganizationName = organizationName;
             this.State = state;
-            this.TenantStatus = tenantStatus;
             this.IsDemo = isDemo;
-            this.EducationOrganizations = educationOrganizations;
-            this.Licenses = licenses;
         }
 
         /// <summary>
         /// Gets or Sets TenantId
         /// </summary>
-        [DataMember(Name = "tenantId", EmitDefaultValue = false)]
-        public Guid TenantId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TenantType
-        /// </summary>
-        [DataMember(Name = "tenantType", EmitDefaultValue = true)]
-        public string TenantType { get; set; }
+        [DataMember(Name = "tenantId", EmitDefaultValue = true)]
+        public string TenantId { get; set; }
 
         /// <summary>
         /// Gets or Sets OrganizationIdentifier
@@ -87,29 +89,39 @@ namespace EdGraph.Me.Client.Model
         public string State { get; set; }
 
         /// <summary>
-        /// Gets or Sets TenantStatus
-        /// </summary>
-        [DataMember(Name = "tenantStatus", EmitDefaultValue = true)]
-        public string TenantStatus { get; set; }
-
-        /// <summary>
         /// Gets or Sets IsDemo
         /// </summary>
         [DataMember(Name = "isDemo", EmitDefaultValue = true)]
-        public bool IsDemo { get; set; }
+        public bool? IsDemo { get; set; }
 
         /// <summary>
         /// Gets or Sets EducationOrganizations
         /// </summary>
         [DataMember(Name = "educationOrganizations", EmitDefaultValue = true)]
-        public List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantEducationOrganizationResponse> EducationOrganizations { get; set; }
+        public List<IdentityApiUserV1UserTenantProfileTypesUserTenantEducationOrganizationProfile> EducationOrganizations { get; private set; }
 
+        /// <summary>
+        /// Returns false as EducationOrganizations should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeEducationOrganizations()
+        {
+            return false;
+        }
         /// <summary>
         /// Gets or Sets Licenses
         /// </summary>
         [DataMember(Name = "licenses", EmitDefaultValue = true)]
-        public List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserTenantLicense> Licenses { get; set; }
+        public List<IdentityApiUserV1UserTenantProfileTypesUserTenantLicenseProfile> Licenses { get; private set; }
 
+        /// <summary>
+        /// Returns false as Licenses should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeLicenses()
+        {
+            return false;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -117,13 +129,13 @@ namespace EdGraph.Me.Client.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse {\n");
+            sb.Append("class IdentityApiUserV1UserTenantProfile {\n");
             sb.Append("  TenantId: ").Append(TenantId).Append("\n");
             sb.Append("  TenantType: ").Append(TenantType).Append("\n");
+            sb.Append("  TenantStatus: ").Append(TenantStatus).Append("\n");
             sb.Append("  OrganizationIdentifier: ").Append(OrganizationIdentifier).Append("\n");
             sb.Append("  OrganizationName: ").Append(OrganizationName).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  TenantStatus: ").Append(TenantStatus).Append("\n");
             sb.Append("  IsDemo: ").Append(IsDemo).Append("\n");
             sb.Append("  EducationOrganizations: ").Append(EducationOrganizations).Append("\n");
             sb.Append("  Licenses: ").Append(Licenses).Append("\n");

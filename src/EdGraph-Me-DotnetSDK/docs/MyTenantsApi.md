@@ -1,16 +1,16 @@
-# EdGraph.Me.Client.Api.MyProfileApi
+# EdGraph.Me.Client.Api.MyTenantsApi
 
 All URIs are relative to *https://api.int.txedexchange.net/tenant*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**GetUserCacheAsync**](MyProfileApi.md#getusercacheasync) | **GET** /me | Retrieves the profile of the user that is currently logged in, including the user&#39;s preferences and its associated tenants |
+| [**GetUserTenants**](MyTenantsApi.md#getusertenants) | **GET** /me/tenants | Retrieves the Tenants of the User that is currently logged in. |
 
-<a id="getusercacheasync"></a>
-# **GetUserCacheAsync**
-> EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheResponse GetUserCacheAsync (string? apiVersion = null, string? xVersion = null)
+<a id="getusertenants"></a>
+# **GetUserTenants**
+> IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel GetUserTenants (int? pageIndex = null, int? pageSize = null, string? filter = null, string? orderBy = null, string? apiVersion = null, string? xVersion = null)
 
-Retrieves the profile of the user that is currently logged in, including the user's preferences and its associated tenants
+Retrieves the Tenants of the User that is currently logged in.
 
 ### Example
 ```csharp
@@ -22,7 +22,7 @@ using EdGraph.Me.Client.Model;
 
 namespace Example
 {
-    public class GetUserCacheAsyncExample
+    public class GetUserTenantsExample
     {
         public static void Main()
         {
@@ -31,19 +31,23 @@ namespace Example
             // Configure OAuth2 access token for authorization: oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
-            var apiInstance = new MyProfileApi(config);
+            var apiInstance = new MyTenantsApi(config);
+            var pageIndex = 0;  // int? |  (optional)  (default to 0)
+            var pageSize = 10;  // int? |  (optional)  (default to 10)
+            var filter = "\"\"";  // string? |  (optional)  (default to "")
+            var orderBy = "\"\"";  // string? |  (optional)  (default to "")
             var apiVersion = "apiVersion_example";  // string? |  (optional) 
             var xVersion = "xVersion_example";  // string? |  (optional) 
 
             try
             {
-                // Retrieves the profile of the user that is currently logged in, including the user's preferences and its associated tenants
-                EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheResponse result = apiInstance.GetUserCacheAsync(apiVersion, xVersion);
+                // Retrieves the Tenants of the User that is currently logged in.
+                IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel result = apiInstance.GetUserTenants(pageIndex, pageSize, filter, orderBy, apiVersion, xVersion);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling MyProfileApi.GetUserCacheAsync: " + e.Message);
+                Debug.Print("Exception when calling MyTenantsApi.GetUserTenants: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -52,21 +56,21 @@ namespace Example
 }
 ```
 
-#### Using the GetUserCacheAsyncWithHttpInfo variant
+#### Using the GetUserTenantsWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    // Retrieves the profile of the user that is currently logged in, including the user's preferences and its associated tenants
-    ApiResponse<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheResponse> response = apiInstance.GetUserCacheAsyncWithHttpInfo(apiVersion, xVersion);
+    // Retrieves the Tenants of the User that is currently logged in.
+    ApiResponse<IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel> response = apiInstance.GetUserTenantsWithHttpInfo(pageIndex, pageSize, filter, orderBy, apiVersion, xVersion);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling MyProfileApi.GetUserCacheAsyncWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling MyTenantsApi.GetUserTenantsWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -76,12 +80,16 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
+| **pageIndex** | **int?** |  | [optional] [default to 0] |
+| **pageSize** | **int?** |  | [optional] [default to 10] |
+| **filter** | **string?** |  | [optional] [default to &quot;&quot;] |
+| **orderBy** | **string?** |  | [optional] [default to &quot;&quot;] |
 | **apiVersion** | **string?** |  | [optional]  |
 | **xVersion** | **string?** |  | [optional]  |
 
 ### Return type
 
-[**EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheResponse**](EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheResponse.md)
+[**IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel**](IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel.md)
 
 ### Authorization
 

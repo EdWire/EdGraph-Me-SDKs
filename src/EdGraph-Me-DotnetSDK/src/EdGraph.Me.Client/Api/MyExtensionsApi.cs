@@ -97,7 +97,7 @@ namespace EdGraph.Me.Client.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IdentityApiUserV1UserExtensionRemovedResponse</returns>
-        System.Threading.Tasks.Task<IdentityApiUserV1UserExtensionRemovedResponse> RemoveUserExtensionAsync(string code, string? apiVersion = default(string?), string? xVersion = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<IdentityApiUserV1UserExtensionRemovedResponse> RemoveUserExtensionAsync(string code, string? apiVersion = default(string?), string? xVersion = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// Removes a user&#39;s profile extension.
@@ -112,7 +112,7 @@ namespace EdGraph.Me.Client.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IdentityApiUserV1UserExtensionRemovedResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IdentityApiUserV1UserExtensionRemovedResponse>> RemoveUserExtensionWithHttpInfoAsync(string code, string? apiVersion = default(string?), string? xVersion = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<IdentityApiUserV1UserExtensionRemovedResponse>> RemoveUserExtensionWithHttpInfoAsync(string code, string? apiVersion = default(string?), string? xVersion = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// Creates or update a user&#39;s profile extension.
         /// </summary>
@@ -126,7 +126,7 @@ namespace EdGraph.Me.Client.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IdentityApiUserV1UserExtensionSetResponse</returns>
-        System.Threading.Tasks.Task<IdentityApiUserV1UserExtensionSetResponse> SetUserExtensionAsync(string? apiVersion = default(string?), string? xVersion = default(string?), IdentityApiUserV1SetUserExtensionRequest? identityApiUserV1SetUserExtensionRequest = default(IdentityApiUserV1SetUserExtensionRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<IdentityApiUserV1UserExtensionSetResponse> SetUserExtensionAsync(string? apiVersion = default(string?), string? xVersion = default(string?), IdentityApiUserV1SetUserExtensionRequest? identityApiUserV1SetUserExtensionRequest = default(IdentityApiUserV1SetUserExtensionRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// Creates or update a user&#39;s profile extension.
@@ -141,7 +141,7 @@ namespace EdGraph.Me.Client.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IdentityApiUserV1UserExtensionSetResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IdentityApiUserV1UserExtensionSetResponse>> SetUserExtensionWithHttpInfoAsync(string? apiVersion = default(string?), string? xVersion = default(string?), IdentityApiUserV1SetUserExtensionRequest? identityApiUserV1SetUserExtensionRequest = default(IdentityApiUserV1SetUserExtensionRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<IdentityApiUserV1UserExtensionSetResponse>> SetUserExtensionWithHttpInfoAsync(string? apiVersion = default(string?), string? xVersion = default(string?), IdentityApiUserV1SetUserExtensionRequest? identityApiUserV1SetUserExtensionRequest = default(IdentityApiUserV1SetUserExtensionRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -370,7 +370,7 @@ namespace EdGraph.Me.Client.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IdentityApiUserV1UserExtensionRemovedResponse</returns>
-        public async System.Threading.Tasks.Task<IdentityApiUserV1UserExtensionRemovedResponse> RemoveUserExtensionAsync(string code, string? apiVersion = default(string?), string? xVersion = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<IdentityApiUserV1UserExtensionRemovedResponse> RemoveUserExtensionAsync(string code, string? apiVersion = default(string?), string? xVersion = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             EdGraph.Me.Client.Client.ApiResponse<IdentityApiUserV1UserExtensionRemovedResponse> localVarResponse = await RemoveUserExtensionWithHttpInfoAsync(code, apiVersion, xVersion, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -386,7 +386,7 @@ namespace EdGraph.Me.Client.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IdentityApiUserV1UserExtensionRemovedResponse)</returns>
-        public async System.Threading.Tasks.Task<EdGraph.Me.Client.Client.ApiResponse<IdentityApiUserV1UserExtensionRemovedResponse>> RemoveUserExtensionWithHttpInfoAsync(string code, string? apiVersion = default(string?), string? xVersion = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<EdGraph.Me.Client.Client.ApiResponse<IdentityApiUserV1UserExtensionRemovedResponse>> RemoveUserExtensionWithHttpInfoAsync(string code, string? apiVersion = default(string?), string? xVersion = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             // verify the required parameter 'code' is set
             if (code == null)
@@ -568,7 +568,7 @@ namespace EdGraph.Me.Client.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IdentityApiUserV1UserExtensionSetResponse</returns>
-        public async System.Threading.Tasks.Task<IdentityApiUserV1UserExtensionSetResponse> SetUserExtensionAsync(string? apiVersion = default(string?), string? xVersion = default(string?), IdentityApiUserV1SetUserExtensionRequest? identityApiUserV1SetUserExtensionRequest = default(IdentityApiUserV1SetUserExtensionRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<IdentityApiUserV1UserExtensionSetResponse> SetUserExtensionAsync(string? apiVersion = default(string?), string? xVersion = default(string?), IdentityApiUserV1SetUserExtensionRequest? identityApiUserV1SetUserExtensionRequest = default(IdentityApiUserV1SetUserExtensionRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             EdGraph.Me.Client.Client.ApiResponse<IdentityApiUserV1UserExtensionSetResponse> localVarResponse = await SetUserExtensionWithHttpInfoAsync(apiVersion, xVersion, identityApiUserV1SetUserExtensionRequest, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -584,7 +584,7 @@ namespace EdGraph.Me.Client.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IdentityApiUserV1UserExtensionSetResponse)</returns>
-        public async System.Threading.Tasks.Task<EdGraph.Me.Client.Client.ApiResponse<IdentityApiUserV1UserExtensionSetResponse>> SetUserExtensionWithHttpInfoAsync(string? apiVersion = default(string?), string? xVersion = default(string?), IdentityApiUserV1SetUserExtensionRequest? identityApiUserV1SetUserExtensionRequest = default(IdentityApiUserV1SetUserExtensionRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<EdGraph.Me.Client.Client.ApiResponse<IdentityApiUserV1UserExtensionSetResponse>> SetUserExtensionWithHttpInfoAsync(string? apiVersion = default(string?), string? xVersion = default(string?), IdentityApiUserV1SetUserExtensionRequest? identityApiUserV1SetUserExtensionRequest = default(IdentityApiUserV1SetUserExtensionRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
 
             EdGraph.Me.Client.Client.RequestOptions localVarRequestOptions = new EdGraph.Me.Client.Client.RequestOptions();

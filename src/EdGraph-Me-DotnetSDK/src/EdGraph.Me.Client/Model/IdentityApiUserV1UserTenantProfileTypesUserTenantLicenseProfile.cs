@@ -26,50 +26,48 @@ using OpenAPIDateConverter = EdGraph.Me.Client.Client.OpenAPIDateConverter;
 namespace EdGraph.Me.Client.Model
 {
     /// <summary>
-    /// IdentityApiUserV1SetUserExtensionRequest
+    /// IdentityApiUserV1UserTenantProfileTypesUserTenantLicenseProfile
     /// </summary>
-    [DataContract(Name = "IdentityApi.User.V1.SetUserExtensionRequest")]
-    public partial class IdentityApiUserV1SetUserExtensionRequest : IValidatableObject
+    [DataContract(Name = "IdentityApi.User.V1.UserTenantProfile+Types+UserTenantLicenseProfile")]
+    public partial class IdentityApiUserV1UserTenantProfileTypesUserTenantLicenseProfile : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="IdentityApiUserV1SetUserExtensionRequest" /> class.
+        /// Initializes a new instance of the <see cref="IdentityApiUserV1UserTenantProfileTypesUserTenantLicenseProfile" /> class.
         /// </summary>
-        /// <param name="userId">userId.</param>
-        /// <param name="code">code.</param>
-        /// <param name="data">data.</param>
-        /// <param name="dataType">dataType.</param>
-        public IdentityApiUserV1SetUserExtensionRequest(string userId = default(string), string code = default(string), string data = default(string), string dataType = default(string))
+        /// <param name="applicationId">applicationId.</param>
+        /// <param name="applicationName">applicationName.</param>
+        public IdentityApiUserV1UserTenantProfileTypesUserTenantLicenseProfile(string applicationId = default(string), string applicationName = default(string))
         {
-            this.UserId = userId;
-            this.Code = code;
-            this.Data = data;
-            this.DataType = dataType;
+            this.ApplicationId = applicationId;
+            this.ApplicationName = applicationName;
         }
 
         /// <summary>
-        /// Gets or Sets UserId
+        /// Gets or Sets ApplicationId
         /// </summary>
-        [DataMember(Name = "userId", EmitDefaultValue = true)]
-        public string UserId { get; set; }
+        [DataMember(Name = "applicationId", EmitDefaultValue = true)]
+        public string ApplicationId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Code
+        /// Gets or Sets ApplicationName
         /// </summary>
-        [DataMember(Name = "code", EmitDefaultValue = true)]
-        public string Code { get; set; }
+        [DataMember(Name = "applicationName", EmitDefaultValue = true)]
+        public string ApplicationName { get; set; }
 
         /// <summary>
-        /// Gets or Sets Data
+        /// Gets or Sets Roles
         /// </summary>
-        [DataMember(Name = "data", EmitDefaultValue = true)]
-        public string Data { get; set; }
+        [DataMember(Name = "roles", EmitDefaultValue = true)]
+        public List<IdentityApiUserV1UserTenantProfileTypesUserTenantLicenseProfileTypesUserTenantLicenseRoleProfile> Roles { get; private set; }
 
         /// <summary>
-        /// Gets or Sets DataType
+        /// Returns false as Roles should not be serialized given that it's read-only.
         /// </summary>
-        [DataMember(Name = "dataType", EmitDefaultValue = true)]
-        public string DataType { get; set; }
-
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeRoles()
+        {
+            return false;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -77,11 +75,10 @@ namespace EdGraph.Me.Client.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class IdentityApiUserV1SetUserExtensionRequest {\n");
-            sb.Append("  UserId: ").Append(UserId).Append("\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
-            sb.Append("  Data: ").Append(Data).Append("\n");
-            sb.Append("  DataType: ").Append(DataType).Append("\n");
+            sb.Append("class IdentityApiUserV1UserTenantProfileTypesUserTenantLicenseProfile {\n");
+            sb.Append("  ApplicationId: ").Append(ApplicationId).Append("\n");
+            sb.Append("  ApplicationName: ").Append(ApplicationName).Append("\n");
+            sb.Append("  Roles: ").Append(Roles).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

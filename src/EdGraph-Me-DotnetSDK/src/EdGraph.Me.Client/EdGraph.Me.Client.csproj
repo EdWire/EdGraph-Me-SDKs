@@ -5,19 +5,20 @@
     <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
     <AssemblyName>EdGraph.Me.Client</AssemblyName>
     <PackageId>EdGraph.Me.Client</PackageId>
-	<OutputType>Library</OutputType>
-	<Authors>Edwire</Authors>
-	<Company>Edwire</Company>
-    <AssemblyTitle>Me SDK</AssemblyTitle>
-    <Description>Me SDK</Description>
+    <OutputType>Library</OutputType>
+    <Authors>OpenAPI</Authors>
+    <Company>OpenAPI</Company>
+    <AssemblyTitle>OpenAPI Library</AssemblyTitle>
+    <Description>A library generated from a OpenAPI doc</Description>
     <Copyright>No Copyright</Copyright>
     <RootNamespace>EdGraph.Me.Client</RootNamespace>
-    <Version>2.1.0</Version>
+    <Version>2409.1.0</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\EdGraph.Me.Client.xml</DocumentationFile>
-    <RepositoryUrl>https://github.com/GIT_USER_ID/GIT_REPO_ID.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/EdWire/EdGraph-Me-SDKs</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageReleaseNotes>Minor update</PackageReleaseNotes>
     <Nullable>annotations</Nullable>
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,9 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="System.Web" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="System.Web" />
   </ItemGroup>
 </Project>

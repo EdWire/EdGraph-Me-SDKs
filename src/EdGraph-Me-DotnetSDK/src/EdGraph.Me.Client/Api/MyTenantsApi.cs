@@ -24,78 +24,90 @@ namespace EdGraph.Me.Client.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IMyPreferencesApiSync : IApiAccessor
+    public interface IMyTenantsApiSync : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
-        /// Creates or update a user&#39;s preference.
+        /// Retrieves the Tenants of the User that is currently logged in.
         /// </summary>
         /// <exception cref="EdGraph.Me.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="pageIndex"> (optional, default to 0)</param>
+        /// <param name="pageSize"> (optional, default to 10)</param>
+        /// <param name="filter"> (optional, default to &quot;&quot;)</param>
+        /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
         /// <param name="apiVersion"> (optional)</param>
         /// <param name="xVersion"> (optional)</param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>IdentityApiUserV1UserPreferenceUpdatedResponse</returns>
-        IdentityApiUserV1UserPreferenceUpdatedResponse UpdateUserPreferenceAsync(string? apiVersion = default(string?), string? xVersion = default(string?), EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest? edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest = default(EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest?), int operationIndex = 0);
+        /// <returns>IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel</returns>
+        IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel GetUserTenants(int? pageIndex = default(int?), int? pageSize = default(int?), string? filter = default(string?), string? orderBy = default(string?), string? apiVersion = default(string?), string? xVersion = default(string?), int operationIndex = 0);
 
         /// <summary>
-        /// Creates or update a user&#39;s preference.
+        /// Retrieves the Tenants of the User that is currently logged in.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="EdGraph.Me.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="pageIndex"> (optional, default to 0)</param>
+        /// <param name="pageSize"> (optional, default to 10)</param>
+        /// <param name="filter"> (optional, default to &quot;&quot;)</param>
+        /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
         /// <param name="apiVersion"> (optional)</param>
         /// <param name="xVersion"> (optional)</param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of IdentityApiUserV1UserPreferenceUpdatedResponse</returns>
-        ApiResponse<IdentityApiUserV1UserPreferenceUpdatedResponse> UpdateUserPreferenceAsyncWithHttpInfo(string? apiVersion = default(string?), string? xVersion = default(string?), EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest? edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest = default(EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest?), int operationIndex = 0);
+        /// <returns>ApiResponse of IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel</returns>
+        ApiResponse<IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel> GetUserTenantsWithHttpInfo(int? pageIndex = default(int?), int? pageSize = default(int?), string? filter = default(string?), string? orderBy = default(string?), string? apiVersion = default(string?), string? xVersion = default(string?), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IMyPreferencesApiAsync : IApiAccessor
+    public interface IMyTenantsApiAsync : IApiAccessor
     {
         #region Asynchronous Operations
         /// <summary>
-        /// Creates or update a user&#39;s preference.
+        /// Retrieves the Tenants of the User that is currently logged in.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="EdGraph.Me.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="pageIndex"> (optional, default to 0)</param>
+        /// <param name="pageSize"> (optional, default to 10)</param>
+        /// <param name="filter"> (optional, default to &quot;&quot;)</param>
+        /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
         /// <param name="apiVersion"> (optional)</param>
         /// <param name="xVersion"> (optional)</param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of IdentityApiUserV1UserPreferenceUpdatedResponse</returns>
-        System.Threading.Tasks.Task<IdentityApiUserV1UserPreferenceUpdatedResponse> UpdateUserPreferenceAsyncAsync(string? apiVersion = default(string?), string? xVersion = default(string?), EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest? edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest = default(EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <returns>Task of IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel</returns>
+        System.Threading.Tasks.Task<IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel> GetUserTenantsAsync(int? pageIndex = default(int?), int? pageSize = default(int?), string? filter = default(string?), string? orderBy = default(string?), string? apiVersion = default(string?), string? xVersion = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
-        /// Creates or update a user&#39;s preference.
+        /// Retrieves the Tenants of the User that is currently logged in.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="EdGraph.Me.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="pageIndex"> (optional, default to 0)</param>
+        /// <param name="pageSize"> (optional, default to 10)</param>
+        /// <param name="filter"> (optional, default to &quot;&quot;)</param>
+        /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
         /// <param name="apiVersion"> (optional)</param>
         /// <param name="xVersion"> (optional)</param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (IdentityApiUserV1UserPreferenceUpdatedResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IdentityApiUserV1UserPreferenceUpdatedResponse>> UpdateUserPreferenceAsyncWithHttpInfoAsync(string? apiVersion = default(string?), string? xVersion = default(string?), EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest? edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest = default(EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel)</returns>
+        System.Threading.Tasks.Task<ApiResponse<IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel>> GetUserTenantsWithHttpInfoAsync(int? pageIndex = default(int?), int? pageSize = default(int?), string? filter = default(string?), string? orderBy = default(string?), string? apiVersion = default(string?), string? xVersion = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IMyPreferencesApi : IMyPreferencesApiSync, IMyPreferencesApiAsync
+    public interface IMyTenantsApi : IMyTenantsApiSync, IMyTenantsApiAsync
     {
 
     }
@@ -103,23 +115,23 @@ namespace EdGraph.Me.Client.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class MyPreferencesApi : IMyPreferencesApi
+    public partial class MyTenantsApi : IMyTenantsApi
     {
         private EdGraph.Me.Client.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MyPreferencesApi"/> class.
+        /// Initializes a new instance of the <see cref="MyTenantsApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public MyPreferencesApi() : this((string)null)
+        public MyTenantsApi() : this((string)null)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MyPreferencesApi"/> class.
+        /// Initializes a new instance of the <see cref="MyTenantsApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public MyPreferencesApi(string basePath)
+        public MyTenantsApi(string basePath)
         {
             this.Configuration = EdGraph.Me.Client.Client.Configuration.MergeConfigurations(
                 EdGraph.Me.Client.Client.GlobalConfiguration.Instance,
@@ -131,12 +143,12 @@ namespace EdGraph.Me.Client.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MyPreferencesApi"/> class
+        /// Initializes a new instance of the <see cref="MyTenantsApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public MyPreferencesApi(EdGraph.Me.Client.Client.Configuration configuration)
+        public MyTenantsApi(EdGraph.Me.Client.Client.Configuration configuration)
         {
             if (configuration == null) throw new ArgumentNullException("configuration");
 
@@ -150,13 +162,13 @@ namespace EdGraph.Me.Client.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MyPreferencesApi"/> class
+        /// Initializes a new instance of the <see cref="MyTenantsApi"/> class
         /// using a Configuration object and client instance.
         /// </summary>
         /// <param name="client">The client interface for synchronous API access.</param>
         /// <param name="asyncClient">The client interface for asynchronous API access.</param>
         /// <param name="configuration">The configuration object.</param>
-        public MyPreferencesApi(EdGraph.Me.Client.Client.ISynchronousClient client, EdGraph.Me.Client.Client.IAsynchronousClient asyncClient, EdGraph.Me.Client.Client.IReadableConfiguration configuration)
+        public MyTenantsApi(EdGraph.Me.Client.Client.ISynchronousClient client, EdGraph.Me.Client.Client.IAsynchronousClient asyncClient, EdGraph.Me.Client.Client.IReadableConfiguration configuration)
         {
             if (client == null) throw new ArgumentNullException("client");
             if (asyncClient == null) throw new ArgumentNullException("asyncClient");
@@ -210,38 +222,40 @@ namespace EdGraph.Me.Client.Api
         }
 
         /// <summary>
-        /// Creates or update a user&#39;s preference. 
+        /// Retrieves the Tenants of the User that is currently logged in. 
         /// </summary>
         /// <exception cref="EdGraph.Me.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="pageIndex"> (optional, default to 0)</param>
+        /// <param name="pageSize"> (optional, default to 10)</param>
+        /// <param name="filter"> (optional, default to &quot;&quot;)</param>
+        /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
         /// <param name="apiVersion"> (optional)</param>
         /// <param name="xVersion"> (optional)</param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>IdentityApiUserV1UserPreferenceUpdatedResponse</returns>
-        public IdentityApiUserV1UserPreferenceUpdatedResponse UpdateUserPreferenceAsync(string? apiVersion = default(string?), string? xVersion = default(string?), EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest? edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest = default(EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest?), int operationIndex = 0)
+        /// <returns>IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel</returns>
+        public IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel GetUserTenants(int? pageIndex = default(int?), int? pageSize = default(int?), string? filter = default(string?), string? orderBy = default(string?), string? apiVersion = default(string?), string? xVersion = default(string?), int operationIndex = 0)
         {
-            EdGraph.Me.Client.Client.ApiResponse<IdentityApiUserV1UserPreferenceUpdatedResponse> localVarResponse = UpdateUserPreferenceAsyncWithHttpInfo(apiVersion, xVersion, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest);
+            EdGraph.Me.Client.Client.ApiResponse<IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel> localVarResponse = GetUserTenantsWithHttpInfo(pageIndex, pageSize, filter, orderBy, apiVersion, xVersion);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Creates or update a user&#39;s preference. 
+        /// Retrieves the Tenants of the User that is currently logged in. 
         /// </summary>
         /// <exception cref="EdGraph.Me.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="pageIndex"> (optional, default to 0)</param>
+        /// <param name="pageSize"> (optional, default to 10)</param>
+        /// <param name="filter"> (optional, default to &quot;&quot;)</param>
+        /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
         /// <param name="apiVersion"> (optional)</param>
         /// <param name="xVersion"> (optional)</param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of IdentityApiUserV1UserPreferenceUpdatedResponse</returns>
-        public EdGraph.Me.Client.Client.ApiResponse<IdentityApiUserV1UserPreferenceUpdatedResponse> UpdateUserPreferenceAsyncWithHttpInfo(string? apiVersion = default(string?), string? xVersion = default(string?), EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest? edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest = default(EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest?), int operationIndex = 0)
+        /// <returns>ApiResponse of IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel</returns>
+        public EdGraph.Me.Client.Client.ApiResponse<IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel> GetUserTenantsWithHttpInfo(int? pageIndex = default(int?), int? pageSize = default(int?), string? filter = default(string?), string? orderBy = default(string?), string? apiVersion = default(string?), string? xVersion = default(string?), int operationIndex = 0)
         {
             EdGraph.Me.Client.Client.RequestOptions localVarRequestOptions = new EdGraph.Me.Client.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
             };
 
             // to determine the Accept header
@@ -261,6 +275,22 @@ namespace EdGraph.Me.Client.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (pageIndex != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(EdGraph.Me.Client.Client.ClientUtils.ParameterToMultiMap("", "pageIndex", pageIndex));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(EdGraph.Me.Client.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+            }
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(EdGraph.Me.Client.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (orderBy != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(EdGraph.Me.Client.Client.ClientUtils.ParameterToMultiMap("", "orderBy", orderBy));
+            }
             if (apiVersion != null)
             {
                 localVarRequestOptions.QueryParameters.Add(EdGraph.Me.Client.Client.ClientUtils.ParameterToMultiMap("", "api-version", apiVersion));
@@ -269,9 +299,8 @@ namespace EdGraph.Me.Client.Api
             {
                 localVarRequestOptions.HeaderParameters.Add("X-version", EdGraph.Me.Client.Client.ClientUtils.ParameterToString(xVersion)); // header parameter
             }
-            localVarRequestOptions.Data = edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest;
 
-            localVarRequestOptions.Operation = "MyPreferencesApi.UpdateUserPreferenceAsync";
+            localVarRequestOptions.Operation = "MyTenantsApi.GetUserTenants";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (oauth2) required
@@ -292,10 +321,10 @@ namespace EdGraph.Me.Client.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<IdentityApiUserV1UserPreferenceUpdatedResponse>("/me/preferences", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel>("/me/tenants", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("UpdateUserPreferenceAsync", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetUserTenants", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -306,41 +335,43 @@ namespace EdGraph.Me.Client.Api
         }
 
         /// <summary>
-        /// Creates or update a user&#39;s preference. 
+        /// Retrieves the Tenants of the User that is currently logged in. 
         /// </summary>
         /// <exception cref="EdGraph.Me.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="pageIndex"> (optional, default to 0)</param>
+        /// <param name="pageSize"> (optional, default to 10)</param>
+        /// <param name="filter"> (optional, default to &quot;&quot;)</param>
+        /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
         /// <param name="apiVersion"> (optional)</param>
         /// <param name="xVersion"> (optional)</param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of IdentityApiUserV1UserPreferenceUpdatedResponse</returns>
-        public async System.Threading.Tasks.Task<IdentityApiUserV1UserPreferenceUpdatedResponse> UpdateUserPreferenceAsyncAsync(string? apiVersion = default(string?), string? xVersion = default(string?), EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest? edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest = default(EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        /// <returns>Task of IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel</returns>
+        public async System.Threading.Tasks.Task<IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel> GetUserTenantsAsync(int? pageIndex = default(int?), int? pageSize = default(int?), string? filter = default(string?), string? orderBy = default(string?), string? apiVersion = default(string?), string? xVersion = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
-            EdGraph.Me.Client.Client.ApiResponse<IdentityApiUserV1UserPreferenceUpdatedResponse> localVarResponse = await UpdateUserPreferenceAsyncWithHttpInfoAsync(apiVersion, xVersion, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            EdGraph.Me.Client.Client.ApiResponse<IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel> localVarResponse = await GetUserTenantsWithHttpInfoAsync(pageIndex, pageSize, filter, orderBy, apiVersion, xVersion, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Creates or update a user&#39;s preference. 
+        /// Retrieves the Tenants of the User that is currently logged in. 
         /// </summary>
         /// <exception cref="EdGraph.Me.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="pageIndex"> (optional, default to 0)</param>
+        /// <param name="pageSize"> (optional, default to 10)</param>
+        /// <param name="filter"> (optional, default to &quot;&quot;)</param>
+        /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
         /// <param name="apiVersion"> (optional)</param>
         /// <param name="xVersion"> (optional)</param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (IdentityApiUserV1UserPreferenceUpdatedResponse)</returns>
-        public async System.Threading.Tasks.Task<EdGraph.Me.Client.Client.ApiResponse<IdentityApiUserV1UserPreferenceUpdatedResponse>> UpdateUserPreferenceAsyncWithHttpInfoAsync(string? apiVersion = default(string?), string? xVersion = default(string?), EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest? edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest = default(EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel)</returns>
+        public async System.Threading.Tasks.Task<EdGraph.Me.Client.Client.ApiResponse<IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel>> GetUserTenantsWithHttpInfoAsync(int? pageIndex = default(int?), int? pageSize = default(int?), string? filter = default(string?), string? orderBy = default(string?), string? apiVersion = default(string?), string? xVersion = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
 
             EdGraph.Me.Client.Client.RequestOptions localVarRequestOptions = new EdGraph.Me.Client.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
             };
 
             // to determine the Accept header
@@ -360,6 +391,22 @@ namespace EdGraph.Me.Client.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (pageIndex != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(EdGraph.Me.Client.Client.ClientUtils.ParameterToMultiMap("", "pageIndex", pageIndex));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(EdGraph.Me.Client.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+            }
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(EdGraph.Me.Client.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (orderBy != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(EdGraph.Me.Client.Client.ClientUtils.ParameterToMultiMap("", "orderBy", orderBy));
+            }
             if (apiVersion != null)
             {
                 localVarRequestOptions.QueryParameters.Add(EdGraph.Me.Client.Client.ClientUtils.ParameterToMultiMap("", "api-version", apiVersion));
@@ -368,9 +415,8 @@ namespace EdGraph.Me.Client.Api
             {
                 localVarRequestOptions.HeaderParameters.Add("X-version", EdGraph.Me.Client.Client.ClientUtils.ParameterToString(xVersion)); // header parameter
             }
-            localVarRequestOptions.Data = edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest;
 
-            localVarRequestOptions.Operation = "MyPreferencesApi.UpdateUserPreferenceAsync";
+            localVarRequestOptions.Operation = "MyTenantsApi.GetUserTenants";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (oauth2) required
@@ -391,11 +437,11 @@ namespace EdGraph.Me.Client.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<IdentityApiUserV1UserPreferenceUpdatedResponse>("/me/preferences", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel>("/me/tenants", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("UpdateUserPreferenceAsync", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetUserTenants", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

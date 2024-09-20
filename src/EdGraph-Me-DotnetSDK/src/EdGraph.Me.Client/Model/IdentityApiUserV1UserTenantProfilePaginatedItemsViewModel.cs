@@ -26,49 +26,49 @@ using OpenAPIDateConverter = EdGraph.Me.Client.Client.OpenAPIDateConverter;
 namespace EdGraph.Me.Client.Model
 {
     /// <summary>
-    /// IdentityApiUserV1SetUserExtensionRequest
+    /// IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel
     /// </summary>
-    [DataContract(Name = "IdentityApi.User.V1.SetUserExtensionRequest")]
-    public partial class IdentityApiUserV1SetUserExtensionRequest : IValidatableObject
+    [DataContract(Name = "IdentityApi.User.V1.UserTenantProfilePaginatedItemsViewModel")]
+    public partial class IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="IdentityApiUserV1SetUserExtensionRequest" /> class.
+        /// Initializes a new instance of the <see cref="IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel" /> class.
         /// </summary>
-        /// <param name="userId">userId.</param>
-        /// <param name="code">code.</param>
+        /// <param name="pageIndex">pageIndex.</param>
+        /// <param name="pageSize">pageSize.</param>
+        /// <param name="count">count.</param>
         /// <param name="data">data.</param>
-        /// <param name="dataType">dataType.</param>
-        public IdentityApiUserV1SetUserExtensionRequest(string userId = default(string), string code = default(string), string data = default(string), string dataType = default(string))
+        public IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel(int pageIndex = default(int), int pageSize = default(int), long count = default(long), List<IdentityApiUserV1UserTenantProfile> data = default(List<IdentityApiUserV1UserTenantProfile>))
         {
-            this.UserId = userId;
-            this.Code = code;
+            this.PageIndex = pageIndex;
+            this.PageSize = pageSize;
+            this.Count = count;
             this.Data = data;
-            this.DataType = dataType;
         }
 
         /// <summary>
-        /// Gets or Sets UserId
+        /// Gets or Sets PageIndex
         /// </summary>
-        [DataMember(Name = "userId", EmitDefaultValue = true)]
-        public string UserId { get; set; }
+        [DataMember(Name = "pageIndex", EmitDefaultValue = false)]
+        public int PageIndex { get; set; }
 
         /// <summary>
-        /// Gets or Sets Code
+        /// Gets or Sets PageSize
         /// </summary>
-        [DataMember(Name = "code", EmitDefaultValue = true)]
-        public string Code { get; set; }
+        [DataMember(Name = "pageSize", EmitDefaultValue = false)]
+        public int PageSize { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Count
+        /// </summary>
+        [DataMember(Name = "count", EmitDefaultValue = false)]
+        public long Count { get; set; }
 
         /// <summary>
         /// Gets or Sets Data
         /// </summary>
         [DataMember(Name = "data", EmitDefaultValue = true)]
-        public string Data { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DataType
-        /// </summary>
-        [DataMember(Name = "dataType", EmitDefaultValue = true)]
-        public string DataType { get; set; }
+        public List<IdentityApiUserV1UserTenantProfile> Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -77,11 +77,11 @@ namespace EdGraph.Me.Client.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class IdentityApiUserV1SetUserExtensionRequest {\n");
-            sb.Append("  UserId: ").Append(UserId).Append("\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("class IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel {\n");
+            sb.Append("  PageIndex: ").Append(PageIndex).Append("\n");
+            sb.Append("  PageSize: ").Append(PageSize).Append("\n");
+            sb.Append("  Count: ").Append(Count).Append("\n");
             sb.Append("  Data: ").Append(Data).Append("\n");
-            sb.Append("  DataType: ").Append(DataType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

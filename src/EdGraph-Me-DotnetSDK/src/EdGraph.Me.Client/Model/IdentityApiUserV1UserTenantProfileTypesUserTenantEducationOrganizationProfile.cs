@@ -26,33 +26,31 @@ using OpenAPIDateConverter = EdGraph.Me.Client.Client.OpenAPIDateConverter;
 namespace EdGraph.Me.Client.Model
 {
     /// <summary>
-    /// EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantEducationOrganizationResponse
+    /// IdentityApiUserV1UserTenantProfileTypesUserTenantEducationOrganizationProfile
     /// </summary>
-    [DataContract(Name = "EdGraph.Platform.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.UserCacheTenantEducationOrganizationResponse")]
-    public partial class EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantEducationOrganizationResponse : IValidatableObject
+    [DataContract(Name = "IdentityApi.User.V1.UserTenantProfile+Types+UserTenantEducationOrganizationProfile")]
+    public partial class IdentityApiUserV1UserTenantProfileTypesUserTenantEducationOrganizationProfile : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantEducationOrganizationResponse" /> class.
+        /// Initializes a new instance of the <see cref="IdentityApiUserV1UserTenantProfileTypesUserTenantEducationOrganizationProfile" /> class.
         /// </summary>
         /// <param name="educationOrganizationId">educationOrganizationId.</param>
         /// <param name="shortNameOfInstitution">shortNameOfInstitution.</param>
         /// <param name="nameOfInstitution">nameOfInstitution.</param>
-        /// <param name="staffClassifications">staffClassifications.</param>
         /// <param name="source">source.</param>
-        public EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantEducationOrganizationResponse(int educationOrganizationId = default(int), string shortNameOfInstitution = default(string), string nameOfInstitution = default(string), List<string> staffClassifications = default(List<string>), string source = default(string))
+        public IdentityApiUserV1UserTenantProfileTypesUserTenantEducationOrganizationProfile(int? educationOrganizationId = default(int?), string shortNameOfInstitution = default(string), string nameOfInstitution = default(string), string source = default(string))
         {
             this.EducationOrganizationId = educationOrganizationId;
             this.ShortNameOfInstitution = shortNameOfInstitution;
             this.NameOfInstitution = nameOfInstitution;
-            this.StaffClassifications = staffClassifications;
             this.Source = source;
         }
 
         /// <summary>
         /// Gets or Sets EducationOrganizationId
         /// </summary>
-        [DataMember(Name = "educationOrganizationId", EmitDefaultValue = false)]
-        public int EducationOrganizationId { get; set; }
+        [DataMember(Name = "educationOrganizationId", EmitDefaultValue = true)]
+        public int? EducationOrganizationId { get; set; }
 
         /// <summary>
         /// Gets or Sets ShortNameOfInstitution
@@ -70,8 +68,16 @@ namespace EdGraph.Me.Client.Model
         /// Gets or Sets StaffClassifications
         /// </summary>
         [DataMember(Name = "staffClassifications", EmitDefaultValue = true)]
-        public List<string> StaffClassifications { get; set; }
+        public List<string> StaffClassifications { get; private set; }
 
+        /// <summary>
+        /// Returns false as StaffClassifications should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeStaffClassifications()
+        {
+            return false;
+        }
         /// <summary>
         /// Gets or Sets Source
         /// </summary>
@@ -85,7 +91,7 @@ namespace EdGraph.Me.Client.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantEducationOrganizationResponse {\n");
+            sb.Append("class IdentityApiUserV1UserTenantProfileTypesUserTenantEducationOrganizationProfile {\n");
             sb.Append("  EducationOrganizationId: ").Append(EducationOrganizationId).Append("\n");
             sb.Append("  ShortNameOfInstitution: ").Append(ShortNameOfInstitution).Append("\n");
             sb.Append("  NameOfInstitution: ").Append(NameOfInstitution).Append("\n");
