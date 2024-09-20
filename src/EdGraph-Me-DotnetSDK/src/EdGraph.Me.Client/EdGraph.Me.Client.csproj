@@ -6,10 +6,10 @@
     <AssemblyName>EdGraph.Me.Client</AssemblyName>
     <PackageId>EdGraph.Me.Client</PackageId>
     <OutputType>Library</OutputType>
-    <Authors>OpenAPI</Authors>
-    <Company>OpenAPI</Company>
-    <AssemblyTitle>OpenAPI Library</AssemblyTitle>
-    <Description>A library generated from a OpenAPI doc</Description>
+    <Authors>EdGraph</Authors>
+    <Company>EdGraph</Company>
+    <AssemblyTitle>EdGraph.Me.Client</AssemblyTitle>
+	<Description>Me SDK</Description>
     <Copyright>No Copyright</Copyright>
     <RootNamespace>EdGraph.Me.Client</RootNamespace>
     <Version>2409.1.0</Version>
